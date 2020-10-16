@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <report
+            id="bt_partner_due_report"
+            model="res.partner"
+            string="Partner Due"
+            report_type="qweb-pdf"
+            name="bt_partner_due.report_partner_due"
+            file="bt_partner_due.report_partner_due"
+            attachment="((object.name) + '_Due_Report' +'.pdf')"
+            print_report_name="(object._get_report_base_filename())"
+            menu="True"
+        />
+
+
+    </data>
+</odoo>

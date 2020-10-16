@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_partner_due_document">
+            <t t-call="web.external_layout">
+                <t t-set="o" t-value="o.with_context(lang=lang)" />
+                <div class="row">
+	                <div class="col-6" name="partner_address">
+	                    <div t-esc="o"
+	                        t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+	                    />
+	                </div>
+	                
+	            </div>
+                <div t-if="o.vat">
+                       <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label" id="inv_tax_id_label"/>
+                       <t t-else="">Tax ID</t>: <span t-field="o.vat"/>
+                </div>
+                
+                <br></br>
+                
+                <div t-if="o.env.context.get('statement_date','')">
+            		<strong>Statement Date:</strong> <t t-esc="o.env.context.get('statement_date','').strftime('%d/%m/%Y')"/>
+            	</div>
+	            
+	            <br></br>
+	            
+                <div class="page">
+                	<table class="table table-sm o_main_table" name="invoice_line_table">
+                        <thead>
+                            <tr>
+                                <th name="th_date" class="text-left"><span>Invoice Date</span></th>
+                                <th name="th_number" class="text-left"><span>Invoice Number</span></th>
+                                <th name="th_amount" class="text-right"><span>Invoice Amount</span></th>
+                                <th name="th_due_amount" class="text-right">Due Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody class="invoice_tbody">
+							<t t-set="current_subtotal" t-value="0"/>
+                            <t t-foreach="o.get_due_invoices()" t-as="invoice_obj">
+                            	
+								<t t-set="current_subtotal" t-value="current_subtotal + invoice_obj.amount_residual"/>
+                                
+                                <tr>
+                                    <t>
+                                        <td class="text-left" name="th_date"><span t-field="invoice_obj.invoice_date"/></td>
+                                        <td class="text-left">
+                                            <span t-field="invoice_obj.name"/>
+                                        </td>
+                                        <td t-attf-class="text-right">
+                                            <span t-field="invoice_obj.amount_total"/>
+                                        </td>
+                                        <td class="text-right o_price_total">
+                                            <span t-field="invoice_obj.amount_residual"/>
+                                        </td>
+                                    </t>
+                                   
+                                </tr>
+                                
+                            </t>
+                            
+                        </tbody>
+                    </table>
+                    
+                    <div class="clearfix">
+                        <div id="total" class="row">
+                            <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                                <table class="table table-sm;page-break-inside: avoid;">
+                                    <tr class="border-black o_total">
+                                        <td class="text-left"><strong>Total Due Amount:</strong></td>
+                                        <td class="text-right">
+                                            <span
+                                                t-esc="current_subtotal"
+                                                t-options='{"widget": "monetary", "display_currency": o.env.user.company_id.currency_id}'
+                                            />
+                                            
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </t>
+        </template>
+
+        
+
+        <template id="report_partner_due">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="lang" t-value="o.lang"/>
+                    <t t-set="company" t-value="o.env.user.company_id.sudo()"/>
+                    <t t-call="bt_partner_due.report_partner_due_document" t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+
+       
+    </data>
+</odoo>

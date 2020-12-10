@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		<function model="camp.registration" name="_update_ir_model"/>
+        <!-- Top menu item -->
+        <menuitem name="Camp Registraion"
+            id="Camp_registraion_main_menu"
+           />
+
+
+
+
+
+         <record id="camp_registraion_tree" model="ir.ui.view">
+            <field name="name">camp.registration.tree</field>
+            <field name="model">camp.registration</field>
+            <field name="arch" type="xml">
+                <tree string="Camp Registration">
+                	<field name="name"/>
+                	<field name="ref_code"/>
+                	<field name="mother_fname"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="camp_registraion_form" model="ir.ui.view">
+            <field name="name">camp.registration.form</field>
+            <field name="model">camp.registration</field>
+            <field name="arch" type="xml">
+                <form string="Camp Registration">
+                	<header>
+						 <button name="create_sale_order" string="Create Sale Order" type="object" class="btn-primary" attrs="{'invisible': [('sale_order_id', '!=',False)]}"/>/>
+                		<field name="state" widget="statusbar"  statusbar_visible="active,scrapped"/>
+                	</header>
+                	<sheet>
+
+                            <group>
+                            	<group>
+                            		<field name="ref_code" />
+                            		<field name="mother_fname"/>
+                            		<field name="mother_fam_name"/>
+                            	</group>
+                            	<group>
+									<field name="name" invisible="1" />
+                            		<field name="father_fname" />
+                            		<field name="father_fam_name"/>
+                            	</group>
+                            </group>
+							<group>
+                            	<group>
+                            		<field name="street"/>
+                            		<field name="city"/>
+                            		<field name="province"/>
+                            		<field name="civic_number"/>
+                            	</group>
+                            	<group>
+                            		<field name="postal_code" />
+                            		<field name="email"/>
+									<field name="tele_phone"/>
+									<field name="apt"/>
+									<field name="sale_order_id"/>
+
+                            	</group>
+                            </group>
+						<group>
+
+                            	<group>
+                            		<field name="emergancy_name" />
+                            		<field name="emergancy_contact_tele" />
+                            		<field name="pickup_contact_full_name"/>
+                            	</group>
+                            </group>
+                            <notebook>
+                                <page string="Children Infomation">
+                            	 	<field name="child_ids" required="1">
+                            	 		<tree editable="bottom">
+		                                    <field name="child_name"/>
+		                                    <field name="child_fam_name"/>
+		                                    <field name="child_age"/>
+		                                    <field name="child_gender"/>
+		                                    <field name="child_medical_condition"/>
+		                                    <field name="child_medicare"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            <page string="Camp Information" >
+	                            <group  string="Camp Information">
+
+	                             	<group>
+	                            		<field name="language" style="width:100%%"/>
+	                            		<field name="camp_date_time" style="width:100%%"/>
+
+                            		</group>
+
+		                            	<group string="CAMP LOCATION">
+                                            <field name="camp_location"/>
+		                            		<field name="camp_civic" />
+		                            		<field name="camp_street" />
+		                            		<field name="camp_city" />
+
+	                            			<field name="camp_province"/>
+		                            		<field name="camp_postal_code"/>
+		                            		<field name="play_check"/>
+		                            	</group>
+                            		</group>
+
+                                  <div class="oe_title">
+									<table>
+										<tr>
+											<td style="width:10%">
+                            					<field name='condition_one'/>
+											</td>
+											<td>
+	   										<label for="condition_one" class="oe-edit-only"/>
+										</td>
+										</tr>
+									</table>
+								  </div><div class="oe_title">
+									<table>
+										<tr>
+											<td style="width:10%">
+                            					<field name='condition_two'/>
+											</td>
+											<td>
+	   										<label for="condition_two" class="oe-edit-only"/>
+										</td>
+										</tr>
+									</table>
+								  </div>
+
+
+	                            </page>
+	                            <page string="Terms and Conditions">
+	                                	<field name="terms_condition" style="width:100%%" readonly="1"/>
+
+
+	                            </page>
+
+	                        </notebook>
+                	 </sheet>
+                 </form>
+             </field>
+        </record>
+
+
+
+		<record id="action_camp_registration" model="ir.actions.act_window">
+	            <field name="name">Camp Registration</field>
+	            <field name="type">ir.actions.act_window</field>
+	            <field name="res_model">camp.registration</field>
+	            <field name="view_mode">tree,form</field>
+
+	        </record>
+  <!-- Top menu item -->
+        <menuitem name="Camp Registraion"
+            id="Camp_registraion_main_menu"
+           />
+
+	        <menuitem action="action_camp_registration" name="Camp Registration"
+	            id="action_camp_registration_menu" parent="Camp_registraion_main_menu"
+	            sequence="12"/>
+
+
+ <record id="product_template_camp_view" model="ir.ui.view">
+        <field name="name">product.template.form - camp</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='type']" position="after">
+                <field name="camp_registration_product"/>
+            </xpath>
+
+        </field>
+    </record>
+
+
+	<!-- Sequences for Camp Registration  -->
+        <record id="seq_camp_code" model="ir.sequence">
+            <field name="name">Camp Registration</field>
+            <field name="code">camp.registration</field>
+            <field name="prefix">CR%(year)s%(month)s%(day)s</field>
+            <field name="padding">3</field>
+   			<field name="number_next">1</field>
+			<field name="number_increment">1</field>
+        </record>
+
+
+
+
+
+	</data>
+</odoo>
+
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	    <record id="view_order_form_inherit" model="ir.ui.view">
+	      <field name="name">sale.view.order.form.inherit</field>
+	      <field name="model">sale.order</field>
+	      <field name="inherit_id" ref="sale.view_order_form"/>
+	      <field name="arch" type="xml">
+	
+		    <xpath expr="//group/group[2]/field[3]" position="replace">
+		        <div>
+		           <field name="date_order" attrs="{'required': [('state', 'in', ['sale', 'done'])], 'invisible': [('state', 'in', ['draft', 'sent'])]}" nolabel="1"
+		                class="oe_inline"/>
+	               <button name="%(action_change_order_date)d" type="action"
+	                    style="margin-left: 10px;" attrs="{'invisible': [('state', 'in', ['draft', 'sent', 'done', 'cancel'])]}">
+	               		<i class="fa fa-arrow-right mr-1 oe_inline"> Change Order Date</i>
+	               </button>
+	            </div>
+            </xpath>
+                
+	      </field>
+	    </record>
+    </data>
+</odoo>
+    

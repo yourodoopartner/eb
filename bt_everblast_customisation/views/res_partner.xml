@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="customer_vendor_customisation_view" model="ir.ui.view">
+    <field name="name">Customer Vendor Customisation</field>
+    <field name="model">res.partner</field>
+    <field name="type">form</field>
+    <field name="inherit_id" ref="account.view_partner_property_form"/>
+    <field name="arch" type="xml">
+
+       <xpath expr="//page[@name='accounting']/group/group[@name='accounting_entries']/field[@name='property_account_payable_id']" position="after">
+        <field name="import_id" invisible="1"/>
+         <field name="balance_owing"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>

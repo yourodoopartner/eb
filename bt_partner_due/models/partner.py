@@ -5,6 +5,11 @@
 from odoo import api, fields, models, _
 
 
+class ResCompany(models.Model):
+    _inherit = 'res.company'
+    
+    active = fields.Boolean('Active', default=True)
+
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 

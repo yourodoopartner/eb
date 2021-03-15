@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
 
+class ResCompany(models.Model):
+    _inherit = 'res.company'
+    
+    active = fields.Boolean('Active', default=True)
+
+
 class ChangeSaleOrderDate(models.TransientModel):
     _name = "sale.order.date.change"
     _description = "Change Sale Order Date"

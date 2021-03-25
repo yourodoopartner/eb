@@ -17,7 +17,7 @@
     'version': '0.1',
 
     'depends': [
-         'account',
+         'account','sale',
     ],
 
     'data': [

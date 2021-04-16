@@ -37,21 +37,26 @@ class WebsiteForm(WebsiteForm):
             return False
         
     def extract_data(self, model, values):
-        childrens = ['_1', '_2', '_3', '_4', '_5']
-        childs = []
-        for child in childrens:
-            child_data = {k.split(child)[0] : v for k, v in values.items() if k.endswith(child)}
-            if child_data:
-                childs.append((0, 0, child_data))
-        date_time = ''
-        if values.get('camp_date_time',  'False'):
-            if self.validate(values['camp_date_time']):
-                date_time = values['camp_date_time']
-                del values['camp_date_time']
+        peoples = ['_1', '_2', '_3', '_4', '_5']
+        ppls = []
+        for people in peoples:
+            people_data = {k.split(people)[0] : v for k, v in values.items() if k.endswith(people)}
+            if people_data:
+                ppls.append((0, 0, people_data))
+        dob = ''
+        if values.get('child_dob',  'False'):
+            if values['child_dob']:
+                dob = values['child_dob']
+                del values['child_dob']
+#         if values.get('dietary_restrictions',  ''):
+#             print('ddddddddddddddddd',values.get('dietary_restrictions',  ''))
+#             dob = values['child_dob']
+#             del values['child_dob']
+                
         res = super(WebsiteForm, self).extract_data(model, values)
-        res['record'].update({'child_ids': childs})
-        if date_time:
-            res['record'].update({'camp_date_time' : date_time})
+        res['record'].update({'pick_up_people_ids': ppls})
+        if dob:
+            res['record'].update({'child_dob' : dob})
         
         return res
     

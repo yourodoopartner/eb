@@ -17,9 +17,8 @@
             <field name="arch" type="xml">
                 <tree string="Camp Registration">
                 	<field name="name"/>
-                	<field name="ref_code"/>
-                	<field name="mother_fname"/>
-
+                	<field name="child_name"/>
+                	<field name="parent_name"/>
                 </tree>
             </field>
         </record>
@@ -31,82 +30,82 @@
             <field name="arch" type="xml">
                 <form string="Camp Registration">
                 	<header>
-						 <button name="create_sale_order" string="Create Sale Order" type="object" class="btn-primary" attrs="{'invisible': [('sale_order_id', '!=',False)]}"/>/>
+						<button name="create_sale_order" string="Create Sale Order" type="object" class="btn-primary" attrs="{'invisible': [('sale_order_id', '!=',False)]}"/>/>
                 		<field name="state" widget="statusbar"  statusbar_visible="active,scrapped"/>
                 	</header>
                 	<sheet>
-
-                            <group>
-                            	<group>
-                            		<field name="ref_code" />
-                            		<field name="mother_fname"/>
-                            		<field name="mother_fam_name"/>
-                            	</group>
-                            	<group>
-									<field name="name" invisible="1" />
-                            		<field name="father_fname" />
-                            		<field name="father_fam_name"/>
-                            	</group>
-                            </group>
-							<group>
-                            	<group>
-                            		<field name="street"/>
-                            		<field name="city"/>
-                            		<field name="province"/>
-                            		<field name="civic_number"/>
-                            	</group>
-                            	<group>
-                            		<field name="postal_code" />
-                            		<field name="email"/>
-									<field name="tele_phone"/>
-									<field name="apt"/>
-									<field name="sale_order_id"/>
-
-                            	</group>
-                            </group>
+                        <group>
+                        	<group>
+                        		<field name="child_name"/>
+                        		<field name="child_family_name"/>
+                        		<field name="child_dob"/>
+                        	</group>
+                        	<group>
+								<field name="name" invisible="1" />
+                        		<field name="parent_name" />
+                        		<field name="parent_family_name"/>
+                        		<field name="parent_social_insurance" />
+                        	</group>
+                        </group>
 						<group>
-
-                            	<group>
-                            		<field name="emergancy_name" />
-                            		<field name="emergancy_contact_tele" />
-                            		<field name="pickup_contact_full_name"/>
-                            	</group>
-                            </group>
-                            <notebook>
-                                <page string="Children Infomation">
-                            	 	<field name="child_ids" required="1">
-                            	 		<tree editable="bottom">
-		                                    <field name="child_name"/>
-		                                    <field name="child_fam_name"/>
-		                                    <field name="child_age"/>
-		                                    <field name="child_gender"/>
-		                                    <field name="child_medical_condition"/>
-		                                    <field name="child_medicare"/>
-                                        </tree>
-                                    </field>
-                                </page>
+                        	<group>
+                        		<field name="civic_number"/>
+                        		<field name="city"/>
+                        		<field name="postal_code"/>
+                        	</group>
+                        	<group>
+                        		<field name="email"/>
+								<field name="tele_phone"/>
+								<field name="sale_order_id"/>
+                        	</group>
+                        </group>
+						<group>
+							<group>
+                        		<field name="child_age" />
+                        		<field name="child_gender" />
+                        	</group>
+                        	<group>
+                        		<field name="emergancy_name" />
+                        		<field name="emergancy_contact_tele" />
+                        	</group>
+                        </group>
+                        <group>
+                        	<field name="dietary_restrictions" widget="radio"/>
+                        	<field name="dietary_restriction_details" attrs="{'invisible': [('dietary_restrictions', '=', False)]}" />
+                        	<field name="child_medical_condition" />
+                        	<field name="comments" />
+                       </group>
+                        
+                        <notebook>
+                            <page string="Pick up Infomation">
+                        	 	<field name="pick_up_people_ids" required="1">
+                        	 		<tree editable="bottom">
+	                                    <field name="first_name"/>
+	                                    <field name="last_name"/>
+                                    </tree>
+                                </field>
+                            </page>
                             <page string="Camp Information" >
-	                            <group  string="Camp Information">
-
-	                             	<group>
-	                            		<field name="language" style="width:100%%"/>
-	                            		<field name="camp_date_time" style="width:100%%"/>
-
+	                            <group>
+	                             	<group string="Camp Organizer Identification">
+	                            		<field name="camp_organizer" style="width:100%%"/>
+	                            		<field name="camp_organizer_phone" style="width:100%%"/>
+	                            		<field name="camp_organizer_phone" style="width:100%%"/>
                             		</group>
+		                            <group string="Camp Host Information">
+                                        <field name="camp_location"/>
+	                            		<field name="camp_family_name" />
+	                            		<field name="camp_email" />
+	                            		<field name="camp_phone" />
+	                            		<field name="camp_street" />
+	                            		<field name="camp_city" />
+	                            		<field name="camp_postal_code"/>
+	                            		<field name="camp_rain_plan"/>
+	                            		<field name="camp_dates"/>
+	                            	</group>
+                            	</group>
 
-		                            	<group string="CAMP LOCATION">
-                                            <field name="camp_location"/>
-		                            		<field name="camp_civic" />
-		                            		<field name="camp_street" />
-		                            		<field name="camp_city" />
-
-	                            			<field name="camp_province"/>
-		                            		<field name="camp_postal_code"/>
-		                            		<field name="play_check"/>
-		                            	</group>
-                            		</group>
-
-                                  <div class="oe_title">
+                                <div class="oe_title">
 									<table>
 										<tr>
 											<td style="width:10%">
@@ -117,7 +116,8 @@
 										</td>
 										</tr>
 									</table>
-								  </div><div class="oe_title">
+								 </div>
+								 <div class="oe_title">
 									<table>
 										<tr>
 											<td style="width:10%">
@@ -128,17 +128,13 @@
 										</td>
 										</tr>
 									</table>
-								  </div>
+								</div>
+                            </page>
+                            <page string="Terms and Conditions">
+                                	<field name="terms_condition" style="width:100%%" readonly="1"/>
+                            </page>
 
-
-	                            </page>
-	                            <page string="Terms and Conditions">
-	                                	<field name="terms_condition" style="width:100%%" readonly="1"/>
-
-
-	                            </page>
-
-	                        </notebook>
+                        </notebook>
                 	 </sheet>
                  </form>
              </field>
@@ -163,31 +159,17 @@
 	            sequence="12"/>
 
 
- <record id="product_template_camp_view" model="ir.ui.view">
-        <field name="name">product.template.form - camp</field>
-        <field name="model">product.template</field>
-        <field name="inherit_id" ref="product.product_template_form_view"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='type']" position="after">
-                <field name="camp_registration_product"/>
-            </xpath>
-
-        </field>
-    </record>
-
-
-	<!-- Sequences for Camp Registration  -->
-        <record id="seq_camp_code" model="ir.sequence">
-            <field name="name">Camp Registration</field>
-            <field name="code">camp.registration</field>
-            <field name="prefix">CR%(year)s%(month)s%(day)s</field>
-            <field name="padding">3</field>
-   			<field name="number_next">1</field>
-			<field name="number_increment">1</field>
-        </record>
-
-
-
+	 	<record id="product_template_camp_view" model="ir.ui.view">
+	        <field name="name">product.template.form - camp</field>
+	        <field name="model">product.template</field>
+	        <field name="inherit_id" ref="product.product_template_form_view"/>
+	        <field name="arch" type="xml">
+	            <xpath expr="//field[@name='type']" position="after">
+	                <field name="camp_registration_product"/>
+	            </xpath>
+	
+	        </field>
+	    </record>
 
 
 	</data>

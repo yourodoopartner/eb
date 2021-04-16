@@ -25,48 +25,102 @@
                                 <h2 class="o_page_header">Camp Registration</h2>
                             </div>
 	                        <br></br>
+	                        <div class="form-group  col-md-12">
+	                        	<strong>
+								IMPORTANT INFORMATION FOR YOUR CHILDCARE TAX RECEIPT
+								<br></br>
+								1. The information you provide in this registration form will be used to prepare your Relevé 24 Childcare Tax Receipt.
+								<br></br>
+								2. You must register each child seperately and use their legal name.
+								<br></br>
+								3. Please ensure that the parent/guardian name and SIN # you enter is for the parent who will be claiming the child care expenses and matches the name used on their tax returns.
+								<br></br>
+								4. Your Relevé 24 tax receipt for this summer's Backyard Camp fees will be prepared in February of next year, and emailed to you at the address provided below. You will not receive a paper copy.
+								</strong>
+								<br></br> <br></br>                                
+                            </div>
 	                        
+							<div class="col-lg-12 text-left mb16">
+							    <h5><u><strong>PARTICIPANT (CAMPER) INFORMATION</strong></u></h5>
+							</div>	                        
 	                      <!--  <div class="form-group row form-field o_website_form_required_custom">
 	                            <label class="col-lg-3 col-md-4 col-form-label" for="name">Name</label>
 	                            <div class="col-lg-7 col-md-8">
 	                                <input type="text" class="form-control o_website_form_input" name="name" t-att-value="request.params.get('name', '')" required=""/>
 	                            </div>
-	                        </div>-->
+	                        </div>
 	                        <div class="form-group row form-field">
 	                            <label class="col-lg-3 col-md-4 col-form-label" for="ref_code">Reference Code</label>
 	                            <div class="col-lg-7 col-md-8">
 	                                <input type="text" class="form-control o_website_form_input" name="ref_code" t-att-value="request.params.get('ref_code', '')" />
 	                            </div>
-	                        </div>
-	                        <div class="form-group row form-field o_website_form_required_custom">
-	                            <label class="col-lg-3 col-md-4 col-form-label" for="mother_fname">Mother's/Guardian's First Name *</label>
-	                            <div class="col-lg-7 col-md-8">
-	                                <input type="text" class="form-control o_website_form_input" name="mother_fname" required="" t-att-value="request.params.get('mother_fname', '')" />
-	                            </div>
-	                        </div>
-	                        <div class="form-group row form-field">
-	                            <label class="col-lg-3 col-md-4 col-form-label" for="father_fname">Father's/Guardian's first Name</label>
-	                            <div class="col-lg-7 col-md-8">
-	                                <input type="text" class="form-control o_website_form_input" name="father_fname" t-att-value="request.params.get('father_fname', '')" />
-	                            </div>
-	                        </div>
-	                        <div class="form-group row form-field">
-	                            <label class="col-lg-3 col-md-4 col-form-label" for="mother_fam_name">Mother's/Guardian's Family Name</label>
-	                            <div class="col-lg-7 col-md-8">
-	                                <input type="text" class="form-control o_website_form_input" name="mother_fam_name" t-att-value="request.params.get('mother_fam_name', '')" />
-	                            </div>
-	                        </div>
-	                        <div class="form-group row form-field">
-	                            <label class="col-lg-3 col-md-4 col-form-label" for="father_fam_name">Father's/Guardian's family Name</label>
-	                            <div class="col-lg-7 col-md-8">
-	                                <input type="text" class="form-control o_website_form_input" name="father_fam_name" t-att-value="request.params.get('father_fam_name', '')" />
-	                            </div>
-	                        </div>
-	                                           
+	                        </div-->
 	                        <div class="form-group row form-field o_website_form_required">
-	                            <label class="col-lg-3 col-md-4 col-form-label" for="street">Street</label>
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="child_name">Child's First Name</label>
 	                            <div class="col-lg-7 col-md-8">
-	                                <input type="text" class="form-control o_website_form_input" name="street" required="" t-att-value="request.params.get('street', '')" />
+	                                <input type="text" class="form-control o_website_form_input" name="child_name" required="" t-att-value="request.params.get('child_name', '')" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group row form-field o_website_form_required">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="child_family_name">Child's Family Name</label>
+	                            <div class="col-lg-7 col-md-8">
+	                                <input type="text" class="form-control o_website_form_input" name="child_family_name" t-att-value="request.params.get('child_family_name', '')" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group row form-field o_website_form_required">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="child_dob">Child's Date of Birth</label>
+	                            <div class="col-lg-7 col-md-8">
+	                            	<input type="date" name="child_dob" class="form-control o_website_form_input" t-att-value="request.params.get('child_dob', '')" />
+	                            
+	                            </div>
+	                                <!--input type="text" class="form-control datetimepicker-input" name="child_dob" t-att-value="request.params.get('child_dob', '')" />
+	                            </div>
+	                            <div class="col-md-7">
+                        <div class="input-group date" id="date_publish_container" data-target-input="nearest">
+                            <input type="text" class="form-control datepicker-input" data-target="#date_publish_container" id="date_publish"/>
+                            <div class="input-group-append" data-target="#date_publish_container" data-toggle="datepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                    </div-->
+	                        </div>
+	                        
+	                        <div class="form-group row form-field">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="total_days">Total # Days</label>
+	                            <div class="col-lg-7 col-md-8">
+	                                <input type="text" class="form-control o_website_form_input" name="total_days" t-att-value="request.params.get('total_days', 0)" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group row form-field">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="amount">Amount</label>
+	                            <div class="col-lg-7 col-md-8">
+	                                <input type="text" class="form-control o_website_form_input" name="amount" t-att-value="request.params.get('amount', 0)" />
+	                            </div>
+	                        </div>
+	                        
+	                        <div class="form-group row form-field o_website_form_required_custom">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="parent_name">Parent/Guardian First Name</label>
+	                            <div class="col-lg-7 col-md-8">
+	                                <input type="text" class="form-control o_website_form_input" name="parent_name" required="" t-att-value="request.params.get('parent_name', '')" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group row form-field o_website_form_required">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="parent_family_name">Parent/Guardian Family Name</label>
+	                            <div class="col-lg-7 col-md-8">
+	                                <input type="text" class="form-control o_website_form_input" name="parent_family_name" t-att-value="request.params.get('parent_family_name', '')" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group row form-field o_website_form_required">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="parent_social_insurance">Parent /Guardian's Social Insurance #</label>
+	                            <div class="col-lg-7 col-md-8">
+	                                <input type="text" class="form-control o_website_form_input" name="parent_social_insurance" t-att-value="request.params.get('parent_social_insurance', '')" />
+	                            </div>
+	                        </div>
+	                        
+	                        <div class="form-group row form-field o_website_form_required">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="civic_number">Civic # &amp; Street</label>
+	                            <div class="col-lg-7 col-md-8">
+	                                <input type="text" class="form-control o_website_form_input" name="civic_number" t-att-value="request.params.get('civic_number', '')" />
 	                            </div>
 	                        </div>
 	                        <div class="form-group row form-field o_website_form_required">
@@ -75,33 +129,7 @@
 	                                <input type="text" class="form-control o_website_form_input" name="city" required="" t-att-value="request.params.get('city', '')" />
 	                            </div>
 	                        </div>
-	                        <div class="form-group row form-field">
-	                            <label class="col-lg-3 col-md-4 col-form-label" for="civic_number">Civic Number</label>
-	                            <div class="col-lg-7 col-md-8">
-	                                <input type="text" class="form-control o_website_form_input" name="civic_number" t-att-value="request.params.get('civic_number', '')" />
-	                            </div>
-	                        </div>
-	                        <div class="form-group row form-field">
-	                            <label class="col-lg-3 col-md-4 col-form-label" for="apt">Apt</label>
-	                            <div class="col-lg-7 col-md-8">
-	                                <input type="text" class="form-control o_website_form_input" name="apt" t-att-value="request.params.get('apt', '')" />
-	                            </div>
-	                        </div>
-	                        <div class="form-group row form-field">
-                                 <label class="col-lg-3 col-md-4 col-form-label"  for="province">State/ Province</label>
-                                 <div class="col-lg-7 col-md-8">
-	                                 <select id="province" name="province">
-	                                     <option value="">State/ Province...</option>
-	                                     <t t-foreach="states" t-as="s">
-	                                         <option t-att-value="s.id" >
-	                                             <t t-esc="s.name" />
-	                                         </option>
-	                                     </t>
-	                                 </select>
-                                 </div>
-                             </div>	     
-	                        
-	                       <div class="form-group row form-field">
+	                        <div class="form-group row form-field o_website_form_required">
 	                            <label class="col-lg-3 col-md-4 col-form-label" for="postal_code">Postal code</label>
 	                            <div class="col-lg-7 col-md-8">
 	                                <input type="text" class="form-control o_website_form_input" name="postal_code" t-att-value="request.params.get('postal_code', '')" />
@@ -113,374 +141,201 @@
 	                                <input type="email" class="form-control o_website_form_input" name="email" required="" t-att-value="request.params.get('email', '')" />
 	                            </div>
 	                        </div>
-	                        <div class="form-group row form-field">
-	                            <label class="col-lg-3 col-md-4 col-form-label" for="tele_phone">Telephone *</label>
+	                        <div class="form-group row form-field o_website_form_required">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="tele_phone">Telephone</label>
 	                            <div class="col-lg-7 col-md-8">
 	                                <input type="tel" class="form-control o_website_form_input" name="tele_phone" required="" t-att-value="request.params.get('tele_phone', '')" />
 	                            </div>
 	                        </div>
-	                        <div class="form-group row form-field">
+	                        
+	                        <div class="form-group row form-field o_website_form_required_custom">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="child_gender">Child's Gender</label>
+	                            <div class="col-lg-7 col-md-8">
+	                                <select id="gender" name="child_gender" required="">
+	                            		<option value="">Gender...</option>
+            							<option value="1">Male</option>
+            							<option value="2">Female</option> 			            							            							                
+        							</select>  
+	                            </div>
+	                        </div>
+	                        <div class="form-group row form-field o_website_form_required_custom">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="child_age">Child's Age</label>
+	                            <div class="col-lg-7 col-md-8">
+	                                <input type="text" class="form-control o_website_form_input" required="" name="child_age" t-att-value="request.params.get('child_age', '')" />
+	                            </div>
+	                        </div>
+					                        
+            				<div class="col-lg-12 text-left mb16">
+							    <h5><u><strong>EMERGENCY CONTACTS &amp; MEDICAL INFORMATION</strong></u></h5>
+							</div>	
+	                        <div class="form-group row form-field o_website_form_required">
 	                            <label class="col-lg-3 col-md-4 col-form-label" for="emergancy_name">Emergency Contact Name</label>
 	                            <div class="col-lg-7 col-md-8">
 	                                <input type="text" class="form-control o_website_form_input" name="emergancy_name" t-att-value="request.params.get('emergancy_name', '')" />
 	                            </div>
 	                        </div>
-	                        <div class="form-group row form-field">
+	                        <div class="form-group row form-field o_website_form_required">
 	                            <label class="col-lg-3 col-md-4 col-form-label" for="emergancy_contact_tele">Emergency Contact Telephone</label>
 	                            <div class="col-lg-7 col-md-8">
 	                                <input type="text" class="form-control o_website_form_input" name="emergancy_contact_tele" t-att-value="request.params.get('emergancy_contact_tele', '')" />
 	                            </div>
 	                        </div>
-	                        <div class="form-group row form-field">
+	                        <!--div class="form-group row form-field">
 	                            <label class="col-lg-3 col-md-4 col-form-label" for="pickup_contact_full_name">Full name of people who can pick-up my child/children after camp</label>
 	                            <div class="col-lg-7 col-md-8">
 	                                <input type="text" class="form-control o_website_form_input" name="pickup_contact_full_name" t-att-value="request.params.get('pickup_contact_full_name', '')" />
 	                            </div>
-	                        </div>
+	                        </div-->
+	                        
 	                        
 	                        <br></br>
-		                    <h5><u><strong>Camp Information</strong></u></h5>
+		                    <strong>The following people are permitted to pick up this child from camp</strong>
 		                    <br></br>
+		                    <div class="form-row">
+                                <div class="form-group  col-md-6 o_website_form_required_custom">
+                                    <label class="col-form-label" for="first_name">1. First Name</label>
+					                <input type="text" class="form-control o_website_form_input" required="" name="first_name_1" t-att-value="request.params.get('first_name_1', '')" />
+                                </div>
+                                <div class="form-group  col-md-6 o_website_form_required_custom">
+                                    <label class="col-form-label" for="last_name">Last Name</label>
+					                <input type="text" class="form-control o_website_form_input" required="" name="last_name_1" t-att-value="request.params.get('last_name_1', '')" />
+                                </div>
+                                
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="first_name">2. First Name</label>
+					                <input type="text" class="form-control o_website_form_input" required="" name="first_name_2" t-att-value="request.params.get('first_name_1', '')" />
+                                </div>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="last_name">Last Name</label>
+					                <input type="text" class="form-control o_website_form_input" required="" name="last_name_2" t-att-value="request.params.get('last_name_1', '')" />
+                                </div>
+                                
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="first_name">3. First Name</label>
+					                <input type="text" class="form-control o_website_form_input" required="" name="first_name_3" t-att-value="request.params.get('first_name_1', '')" />
+                                </div>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="last_name">Last Name</label>
+					                <input type="text" class="form-control o_website_form_input" required="" name="last_name_3" t-att-value="request.params.get('last_name_1', '')" />
+                                </div>
+                                
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="first_name">4. First Name</label>
+					                <input type="text" class="form-control o_website_form_input" required="" name="first_name_4" t-att-value="request.params.get('first_name_1', '')" />
+                                </div>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="last_name">Last Name</label>
+					                <input type="text" class="form-control o_website_form_input" required="" name="last_name_4" t-att-value="request.params.get('last_name_1', '')" />
+                                </div>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="first_name">5. First Name</label>
+					                <input type="text" class="form-control o_website_form_input" required="" name="first_name_5" t-att-value="request.params.get('first_name_1', '')" />
+                                </div>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="last_name">Last Name</label>
+					                <input type="text" class="form-control o_website_form_input" required="" name="last_name_5" t-att-value="request.params.get('last_name_1', '')" />
+                                </div>
+		                    </div>
 		                   
-		                   
-		                  
-		                   
-		                   <div class="form-row">
-                                        
-                                        <div t-attf-class="form-group col-md-6 ">
-                                            <label class="col-form-label" for="camp_date_time">Date and Time</label>
-                                            <input type="text"   id="camp_date_time" name="camp_date_time" required="" class="form-control" />
-                                        </div>
-                                        <div class="form-group col-md-6 ">
-                                            <label class="col-form-label" for="language">Language</label>
-                                            <select id="language" name="language" class="form-control"> 
-			                            		<option value="">Select Language...</option>
-		            							<option value="1">English</option>
-		            							<option value="2">Français</option> 
-		            							<option value="3">Bilingual</option>            							                 
-		        							</select> 
-                                            
-                                        </div>
-                                         <div t-attf-class="form-group col-md-6 ">
-                                            <label class="col-form-label" for="camp_location">Camp Location</label>
-                                            <input type="text" name="camp_location" class="form-control" />
-                                        </div>
-                                        <div class="form-group  col-md-6">
-                                            <label class="col-form-label" for="camp_civic">Camp Civic</label>
-                                            <input type="text" name="camp_civic" class="form-control"/>
-                                        </div>
-                                        <div class="form-group  col-md-6">
-                                            <label class="col-form-label" for="camp_street">Camp Street</label>
-                                            <input type="text" name="camp_street" class="form-control"/>
-                                        </div>
-                                        <div class="form-group  col-md-6">
-                                            <label class="col-form-label" for="camp_city">Camp City</label>
-                                            <input type="text" name="camp_city" class="form-control"/>
-                                        </div>
-                                        <div class="form-group  col-md-6">
-                                            <label class="col-form-label" for="camp_province">Camp Province</label>
-				                                 <select id="camp_province" name="camp_province" class="form-control">
-				                                     <option value="">State/ Province...</option>
-				                                     <t t-foreach="states" t-as="s">
-				                                         <option t-att-value="s.id" >
-				                                             <t t-esc="s.name" />
-				                                         </option>
-				                                     </t>
-				                                 </select>
-                                        </div>
-                                        <div class="form-group  col-md-6">
-                                            <label class="col-form-label" for="camp_postal_code">Camp Postal Code</label>
-                                            <input type="text" name="camp_postal_code" class="form-control"/>
-                                        </div>
-                                        <br></br>
-                                        <div class="form-group  col-md-6 o_website_form_required_custom">
-                                            <label class="col-form-label" for="play_check">Are your kids allowed to play at the park?</label>
-                                            <input type="checkbox" name="play_check"/>
-                                        </div>
-                                        
-                                       <br></br>
-                                        
-                                       
-                                    </div>
-		                   
-		                   
-		                   
-		                   
-		                                   
-	                       <br></br>
+	                        <br></br>
 	                        
-	                         <section class="o_tasks">
-						        <div class="container">
-						            <div class="row">
-						                <div class="col-md-6 col-lg-4">
-						                 <h5><u><strong>First Child Details *</strong></u></h5>
-						                 <br></br>
-						                   <div>
-												<div class="form-group row form-field o_website_form_required_custom">
-					                            <label class="col-lg-3 col-md-4 col-form-label" for="child_name">Child First Name</label>
-					                            <div class="col-lg-7 col-md-8">
-					                                <input type="text" class="form-control o_website_form_input" required="" name="child_name_1" t-att-value="request.params.get('child_name_1', '')" />
-					                            </div>
-					                        </div>
-					                        
-					                        <div class="form-group row form-field o_website_form_required_custom">
-					                            <label class="col-lg-3 col-md-4 col-form-label" for="child_fam_name">Child Family Name</label>
-					                            <div class="col-lg-7 col-md-8">
-					                                <input type="text" class="form-control o_website_form_input" required="" name="child_fam_name_1" t-att-value="request.params.get('child_fam_name_1', '')" />
-					                            </div>
-					                        </div>
-					                        <div class="form-group row form-field o_website_form_required_custom">
-					                            <label class="col-lg-3 col-md-4 col-form-label" for="child_age">Child Age</label>
-					                            <div class="col-lg-7 col-md-8">
-					                                <input type="text" class="form-control o_website_form_input" required="" name="child_age_1" t-att-value="request.params.get('child_age_1', '')" />
-					                            </div>
-					                        </div>
-					                        <div class="form-group row form-field o_website_form_required_custom">
-					                            <label class="col-lg-3 col-md-4 col-form-label" for="child_gender">Child Gender</label>
-					                            <div class="col-lg-7 col-md-8">
-					                                <select id="gender" name="child_gender_1" required="">
-					                            		<option value="">Gender...</option>
-				            							<option value="1">Male</option>
-				            							<option value="2">Female</option> 			            							            							                
-				        							</select>  
-					                            </div>
-					                        </div>
-					                        <div class="form-group row form-field o_website_form_required_custom">
-					                            <label class="col-lg-3 col-md-4 col-form-label" for="child_medical_condition">Child Medical Conditions/Allergies</label>
-					                            <div class="col-lg-7 col-md-8">
-					                                <input type="text" class="form-control o_website_form_input" required="" name="child_medical_condition_1" t-att-value="request.params.get('child_medical_condition_1', '')" />
-					                            </div>
-					                        </div>
-					                        <div class="form-group row form-field o_website_form_required_custom">
-					                            <label class="col-lg-3 col-md-4 col-form-label" for="child_medicare">Medicare</label>
-					                            <div class="col-lg-7 col-md-8">
-					                                <input type="text" class="form-control o_website_form_input" required="" name="child_medicare_1" t-att-value="request.params.get('child_medicare_1', '')" />
-					                            </div>
-					                        </div>
-											
-											
-											</div>
-						                </div>
-						                <div class="col-md-6 col-lg-4">
-						                <h5><u><strong>Second Child Details</strong></u></h5>
-						                <br></br>
-						                    <div>
-											
-												<div class="form-group row form-field">
-					                            <label class="col-lg-3 col-md-4 col-form-label" for="child_name">Child First Name</label>
-					                            <div class="col-lg-7 col-md-8">
-					                                <input type="text" class="form-control o_website_form_input" name="child_name_2" t-att-value="request.params.get('child_name_2', '')" />
-					                            </div>
-					                        </div>
-					                        
-					                        <div class="form-group row form-field">
-					                            <label class="col-lg-3 col-md-4 col-form-label" for="child_fam_name">Child Family Name</label>
-					                            <div class="col-lg-7 col-md-8">
-					                                <input type="text" class="form-control o_website_form_input" name="child_fam_name_2" t-att-value="request.params.get('child_fam_name_2', '')" />
-					                            </div>
-					                        </div>
-					                        <div class="form-group row form-field">
-					                            <label class="col-lg-3 col-md-4 col-form-label" for="child_age">Child Age</label>
-					                            <div class="col-lg-7 col-md-8">
-					                                <input type="text" class="form-control o_website_form_input" name="child_age_2" t-att-value="request.params.get('child_age_2', '')" />
-					                            </div>
-					                        </div>
-					                        <div class="form-group row form-field">
-					                            <label class="col-lg-3 col-md-4 col-form-label" for="child_gender">Child Gender</label>
-					                            <div class="col-lg-7 col-md-8">
-					                                <select id="gender" name="child_gender_2"> 
-						                            		<option value="">Gender...</option>
-					            							<option value="1">Male</option>
-					            							<option value="2">Female</option> 			            							            							                
-					        						</select>
-					                            </div>
-					                        </div>
-					                        <div class="form-group row form-field">
-					                            <label class="col-lg-3 col-md-4 col-form-label" for="child_medical_condition">Child Medical Conditions/Allergies</label>
-					                            <div class="col-lg-7 col-md-8">
-					                                <input type="text" class="form-control o_website_form_input" name="child_medical_condition_2" t-att-value="request.params.get('child_medical_condition_2', '')" />
-					                            </div>
-					                        </div>
-					                        <div class="form-group row form-field">
-					                            <label class="col-lg-3 col-md-4 col-form-label" for="child_medicare">Medicare</label>
-					                            <div class="col-lg-7 col-md-8">
-					                                <input type="text" class="form-control o_website_form_input" name="child_medicare_2" t-att-value="request.params.get('child_medicare_2', '')" />
-					                            </div>
-					                        </div>	
-											
-											
-											</div>
-			                </div>
-			                <div class="col-md-6 col-lg-4">
-			                    <h5><u><strong>Third Child Details</strong></u></h5>
-			                    <br></br>
-			                    <div>
-			                     <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_name">Child First Name</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_name_3" t-att-value="request.params.get('child_name_3', '')" />
-		                            </div>
-		                        </div>
-		                        
-		                        <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_fam_name">Child Family Name</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_fam_name_3" t-att-value="request.params.get('child_fam_name_3', '')" />
-		                            </div>
-		                        </div>
-		                        <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_age">Child Age</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_age_3" t-att-value="request.params.get('child_age_3', '')" />
-		                            </div>
-		                        </div>
-		                        <div class="form-group row form-field">
-			                    	<label class="col-lg-3 col-md-4 col-form-label" for="child_gender_3">Child Gender</label>
-			                            <div class="col-lg-7 col-md-8">
-			                                <select id="gender" name="child_gender_3"> 
-				                            		<option value="">Gender...</option>
-			            							<option value="1">Male</option>
-			            							<option value="2">Female</option> 			            							            							                
-			        						</select>
-			                       		</div>
-			                    </div>
-		                        <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_medical_condition_3">Child MediSendcal Conditions/Allergies</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_medical_condition_3" t-att-value="request.params.get('child_medical_condition_3', '')" />
-		                            </div>
-		                        </div>
-		                        <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_medicare_3">Medicare</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_medicare_3" t-att-value="request.params.get('child_medicare_3', '')" />
-		                            </div>
-		                        </div>		                        
-			                 </div>
-			                </div>
-			            </div>
-			        </div>
-			    </section>
-			     <section class="o_tasks">
-			        <div class="container">
-			            <div class="row">
-			                <div class="col-md-6 col-lg-4">
-			                	<br></br>
-			                    <h5><u><strong>Fourth Child Details</strong></u></h5>
-			                    <br></br>
-			                    <div>
-			                     <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_name_4">Child First Name</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_name_4" t-att-value="request.params.get('child_name_4', '')" />
-		                            </div>
-		                        </div>
-		                        
-		                        <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_fam_name_4">Child Family Name</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_fam_name_4" t-att-value="request.params.get('child_fam_name_4', '')" />
-		                            </div>
-		                        </div>
-		                        <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_age_4">Child Age</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_age_4" t-att-value="request.params.get('child_age_4', '')" />
-		                            </div>
-		                        </div>
-		                        <div class="form-group row form-field">
-			                    	<label class="col-lg-3 col-md-4 col-form-label" for="child_gender_4">Child Gender</label>
-			                            <div class="col-lg-7 col-md-8">
-			                                <select id="gender" name="child_gender_4"> 
-				                            		<option value="">Gender...</option>
-			            							<option value="1">Male</option>
-			            							<option value="2">Female</option> 			            							            							                
-			        						</select>
-			                            </div>
-			                        </div>
-		                        <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_medical_condition_4">Child Medical Conditions/Allergies</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_medical_condition_4" t-att-value="request.params.get('child_medical_condition_4', '')" />
-		                            </div>
-		                        </div>
-		                        <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_medicare_4">Medicare</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_medicare_4" t-att-value="request.params.get('child_medicare_4', '')" />
-		                            </div>
-		                        </div>		                        
-		                     </div> 
-			                </div>
-			                <div class="col-md-6 col-lg-4">
-			                	<br></br>
-			                    <h5><u><strong>Fifth Child Details</strong></u></h5>
-			                    <br></br>
-			                    <div>
-			                     <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_name_5">Child First Name</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_name_5" t-att-value="request.params.get('child_name_5', '')" />
-		                            </div>
-		                        </div>
-		                        
-		                        <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_fam_name_5">Child Family Name</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_fam_name_5" t-att-value="request.params.get('child_fam_name_5', '')" />
-		                            </div>
-		                        </div>
-		                        <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_age_5">Child Age</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_age_5" t-att-value="request.params.get('child_age_5', '')" />
-		                            </div>
-		                        </div>
-		                        <div class="form-group row form-field">
-			                   		<label class="col-lg-3 col-md-4 col-form-label" for="child_gender_5">Child Gender</label>
-			                            <div class="col-lg-7 col-md-8">
-			                                <select id="gender" name="child_gender_5"> 
-				                            		<option value="">Gender...</option>
-			            							<option value="1">Male</option>
-			            							<option value="2">Female</option> 			            							            							                
-			        						</select>
-			                            </div>
-			                        </div>
-		                        <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_medical_condition_5">Child Medical Conditions/Allergies</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_medical_condition_5" t-att-value="request.params.get('child_medical_condition_5', '')" />
-		                            </div>
-		                        </div>
-		                        <div class="form-group row form-field">
-		                            <label class="col-lg-3 col-md-4 col-form-label" for="child_medicare_5">Medicare</label>
-		                            <div class="col-lg-7 col-md-8">
-		                                <input type="text" class="form-control o_website_form_input" name="child_medicare_5" t-att-value="request.params.get('child_medicare_5', '')" />
-		                            </div>
-		                        </div>		                        
-		                     </div>		
-				                </div>
-				            </div>
-				        </div>
-				    </section>
-    
-    
+	                        <div class="form-group row form-field">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="dietary_restrictions">Dietary restrictions</label>
+	                            <div class="col-lg-7 col-md-8">
+	                            	<input type="radio" name="dietary_restrictions" t-att-value="request.params.get('dietary_restrictions', '1')"/> Yes
+	                            	<input type="radio" name="dietary_restrictions" t-att-value="request.params.get('dietary_restrictions', '0')"/> No
+	                           		<input type="text" class="form-control o_website_form_input" placeholder="If yes, specify...." name="dietary_restriction_details" t-att-value="request.params.get('dietary_restriction_details', '')" />
+	                            </div>
+	                        </div>
+	                        <br></br>
+    						<div class="form-group row form-field">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="child_medical_condition">Please indicate any allergies, medical conditions and/or medication we should be aware of for this child</label>
+	                            <div class="col-lg-7 col-md-8">
+	                                <input type="text" class="form-control o_website_form_input" name="child_medical_condition" t-att-value="request.params.get('child_medical_condition', '')" />
+	                            </div>
+	                        </div>
     						
 	                        <br></br>
-	                        
+	                        <div class="col-lg-12 text-left mb16">
+							    <h5><u><strong>PERMISSIONS</strong></u></h5>
+							</div>	 
 	                        <div class="form-group  col-md-12 o_website_form_required_custom">
                                  <input type="checkbox" name="condition_one"/>
-                                 <label class="col-form-label" for="condition_one">I accept to receive email communications, including promotional material from Everblast.</label>
-                                 
+                                 <label class="col-form-label" for="condition_one">I have ready and agree to the terms &amp; conditions and waiver of liability.</label>
                              </div>
                              <div class="form-group  col-md-12 o_website_form_required_custom">
                                  <input type="checkbox" name="condition_two"/>
-                                 <label class="col-form-label" for="condition_two">I hereby grant permission to Everblast Backyard Camp to take photographs and video of my child/children  to be used for promotional, instructional, educational or commercial purposes.</label>
-                                 
+                                 <label class="col-form-label" for="condition_two">I hereby grant permission to Everblast Backyard Camp to take photographs and video of my child to be used for promotional, instructional, educational or commercial purposes.</label>
                              </div>
                              
 	                         <br></br>
-	                      
+	                         <div class="form-group row form-field">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="comments">Additional Information / Comments</label>
+	                            <div class="col-lg-7 col-md-8">
+	                                <input type="text" class="form-control o_website_form_input" name="comments" t-att-value="request.params.get('comments', '')" />
+	                            </div>
+	                        </div>
+	                         
+                         	<br></br><br></br>
+	                   	 	<strong>The following section must be completed by the Camp Organiser only.</strong>
+	                    	<br></br><br></br>
+	                    	<h5><u><strong>Camp Information</strong></u></h5>
+	                    	<br></br>
+		                   	<div class="form-row">
+                                <div t-attf-class="form-group col-md-6 ">
+                                    <label class="col-form-label" for="camp_organizer">Camp Organizer Name</label>
+                                    <input type="text"   id="camp_organizer" name="camp_organizer" required="" class="form-control" />
+                                </div>
+                                <br></br>
+                                <div t-attf-class="form-group col-md-6 ">
+                                    <label class="col-form-label" for="camp_organizer_phone">Camp Organizer Tel. #</label>
+                                    <input type="tel" name="camp_organizer_phone" class="form-control" />
+                                </div>
+                                <div t-attf-class="form-group col-md-6 ">
+                                    <label class="col-form-label" for="camp_organizer_email">Camp Organizer Email address</label>
+                                    <input type="email" name="camp_organizer_email" class="form-control" />
+                                </div>
+                                
+                                <br></br>
+                                <div t-attf-class="form-group col-md-6 ">
+                                    <label class="col-form-label" for="camp_location">Host First Name</label>
+                                    <input type="text" name="camp_location" class="form-control" />
+                                </div>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="camp_family_name">Host Family Name</label>
+                                    <input type="text" name="camp_family_name" class="form-control"/>
+                                </div>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="camp_email">Host Email Address</label>
+                                    <input type="email" name="camp_email" class="form-control"/>
+                                </div>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="camp_phone">Host Telephone #</label>
+                                    <input type="tel" name="camp_phone" class="form-control"/>
+                                </div>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="camp_street">Civic # &amp; Street</label>
+                                    <input type="text" name="camp_street" class="form-control"/>
+                                </div>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="camp_city">City</label>
+                                    <input type="text" name="camp_city" class="form-control"/>
+                                </div>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="camp_postal_code">Postal Code</label>
+                                    <input type="text" name="camp_postal_code" class="form-control"/>
+                                </div>
+                                <br></br>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="camp_rain_plan">Rain Plan (garage, basement, other)</label>
+                                    <input type="text" name="camp_rain_plan" class="form-control"/>
+                                </div>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="camp_dates">Dates hosting this camp</label>
+                                    <input type="text" name="camp_dates" class="form-control"/>
+                                </div>
+                            </div>
+		                    <br></br><br></br>
 	                        <div class="form-group row">
 	                            <div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
 	                                <a href="#" style="width:200px;height:50px" role="button" class="btn btn-primary btn-lg o_website_form_send">Register</a>

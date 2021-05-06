@@ -2,27 +2,77 @@
 <odoo>
     <data>
 		<function model="camp.registration" name="_update_ir_model"/>
+		
         <!-- Top menu item -->
-        <menuitem name="Camp Registraion"
+        <menuitem name="Camp Registration"
             id="Camp_registraion_main_menu"
            />
+           
+        <menuitem name="Configuration"
+            id="camp_registraion_config_menu" parent="Camp_registraion_main_menu"
+            sequence="15"/>   
 
 
+		<record id="camp_week_selection_tree" model="ir.ui.view">
+            <field name="name">camp.week.selection.tree</field>
+            <field name="model">camp.week.selection</field>
+            <field name="arch" type="xml">
+                <tree string="Camp Week Selection">
+                	<field name="name"/>
+                	<field name="code"/>
+                	<field name="date_from"/>
+                	<field name="date_to"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="camp_week_selection_form" model="ir.ui.view">
+            <field name="name">camp.week.selection.form</field>
+            <field name="model">camp.week.selection</field>
+            <field name="arch" type="xml">
+                <form string="Camp Week Selection">
+                	<header>
+                	</header>
+                	<sheet>
+                        <group>
+                        	<group>
+                        		<field name="name"/>
+                        		<field name="date_from"/>
+                        	</group>
+                        	<group>
+                        		<field name="code"/>
+                        		<field name="date_to"/>
+                        	</group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+                        	
+		<record id="action_camp_week_selection" model="ir.actions.act_window">
+            <field name="name">Camp Week Selection</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">camp.week.selection</field>
+            <field name="view_mode">tree,form</field>
+        </record>
 
+        <menuitem action="action_camp_week_selection" name="Camp Week Selection"
+            id="action_camp_week_selection_menu" parent="camp_registraion_config_menu"
+            sequence="1"/>
 
-
-         <record id="camp_registraion_tree" model="ir.ui.view">
+		
+        <record id="camp_registraion_tree" model="ir.ui.view">
             <field name="name">camp.registration.tree</field>
             <field name="model">camp.registration</field>
             <field name="arch" type="xml">
                 <tree string="Camp Registration">
                 	<field name="name"/>
+                	<field name="ref_code"/>
                 	<field name="child_name"/>
                 	<field name="parent_name"/>
                 </tree>
             </field>
         </record>
-
 
         <record id="camp_registraion_form" model="ir.ui.view">
             <field name="name">camp.registration.form</field>
@@ -35,6 +85,11 @@
                 	</header>
                 	<sheet>
                         <group>
+                        	<group>
+                        		<field name="ref_code"/>
+                        	</group>
+                        	<group>
+                        	</group>
                         	<group>
                         		<field name="child_name"/>
                         		<field name="child_family_name"/>
@@ -78,10 +133,20 @@
                         
                         <notebook>
                             <page string="Pick up Infomation">
-                        	 	<field name="pick_up_people_ids" required="1">
+                        	 	<field name="pick_up_people_ids" required="0">
                         	 		<tree editable="bottom">
 	                                    <field name="first_name"/>
 	                                    <field name="last_name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Camp Dates Selection">
+                        	 	<field name="camp_date_selection_ids" required="0">
+                        	 		<tree editable="bottom">
+	                                    <!--field name="name"/-->
+	                                    <field name="week_id"/>
+	                                    <field name="date"/>
+	                                    <field name="slot"/>
                                     </tree>
                                 </field>
                             </page>
@@ -90,18 +155,20 @@
 	                             	<group string="Camp Organizer Identification">
 	                            		<field name="camp_organizer" style="width:100%%"/>
 	                            		<field name="camp_organizer_phone" style="width:100%%"/>
-	                            		<field name="camp_organizer_phone" style="width:100%%"/>
+	                            		<field name="camp_organizer_email" style="width:100%%"/>
                             		</group>
 		                            <group string="Camp Host Information">
-                                        <field name="camp_location"/>
+                                        <field name="camp_host_name"/>
 	                            		<field name="camp_family_name" />
 	                            		<field name="camp_email" />
 	                            		<field name="camp_phone" />
 	                            		<field name="camp_street" />
 	                            		<field name="camp_city" />
 	                            		<field name="camp_postal_code"/>
+	                            		<field name="camp_location"/>
 	                            		<field name="camp_rain_plan"/>
-	                            		<field name="camp_dates"/>
+	                            		<field name="camp_first_date"/>
+	                            		<field name="is_more_camp_host"/>
 	                            	</group>
                             	</group>
 
@@ -131,7 +198,7 @@
 								</div>
                             </page>
                             <page string="Terms and Conditions">
-                                	<field name="terms_condition" style="width:100%%" readonly="1"/>
+                            	<field name="terms_condition" style="width:100%%" readonly="1"/>
                             </page>
 
                         </notebook>
@@ -140,23 +207,16 @@
              </field>
         </record>
 
-
-
 		<record id="action_camp_registration" model="ir.actions.act_window">
-	            <field name="name">Camp Registration</field>
-	            <field name="type">ir.actions.act_window</field>
-	            <field name="res_model">camp.registration</field>
-	            <field name="view_mode">tree,form</field>
-
-	        </record>
-  <!-- Top menu item -->
-        <menuitem name="Camp Registraion"
-            id="Camp_registraion_main_menu"
-           />
-
-	        <menuitem action="action_camp_registration" name="Camp Registration"
-	            id="action_camp_registration_menu" parent="Camp_registraion_main_menu"
-	            sequence="12"/>
+            <field name="name">Camp Registration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">camp.registration</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+	        
+        <menuitem action="action_camp_registration" name="Camp Registration"
+            id="action_camp_registration_menu" parent="Camp_registraion_main_menu"
+            sequence="12"/>
 
 
 	 	<record id="product_template_camp_view" model="ir.ui.view">
@@ -167,10 +227,8 @@
 	            <xpath expr="//field[@name='type']" position="after">
 	                <field name="camp_registration_product"/>
 	            </xpath>
-	
 	        </field>
 	    </record>
-
 
 	</data>
 </odoo>

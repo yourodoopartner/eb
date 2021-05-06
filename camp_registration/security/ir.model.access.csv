@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_camp_registration,camp_registration,model_camp_registration,,1,1,1,1
 access_pickup_people_details,pickup_people_details,model_pickup_people_details,,1,1,1,1
+access_camp_week_selection,camp_week_selection,model_camp_week_selection,,1,1,1,1
+access_camp_date_selection,camp_date_selection,model_camp_date_selection,,1,1,1,1

@@ -11,6 +11,28 @@ class PickupPeopleDetails(models.Model):
     camp_registration_id = fields.Many2one('camp.registration',string='Camp Registration')
     
     
+class CampWeekSelection(models.Model):
+    _name = "camp.week.selection"
+    _description = "Camp Week Selection"
+
+    name = fields.Char(string='Name')
+    code = fields.Char(string='Code')
+    date_from = fields.Date(string='From Date')
+    date_to = fields.Date(string='To Date')
+    
+
+class CampDateSelection(models.Model):
+    _name = "camp.date.selection"
+    _description = "Camp Date Selection"
+    _order = 'date'
+
+    name = fields.Char(string='Name')
+    week_id = fields.Many2one('camp.week.selection',string='Week')
+    date = fields.Date(string='Date')
+    slot = fields.Selection([('AM', 'AM'), ('PM', 'PM'), ('full', 'Full Day')], string='Slot')
+    camp_registration_id = fields.Many2one('camp.registration',string='Camp Registration')
+    
+    
 class Campregistration(models.Model):
     _name = "camp.registration"
     _description = "Camp Registration"
@@ -62,6 +84,8 @@ class Campregistration(models.Model):
 
     '''
         
+    ref_code = fields.Char(string='Camp Code')
+    
     child_name = fields.Char(string="Child's First Name")
     child_family_name = fields.Char(string="Child's Family Name")
     child_dob = fields.Date(string="Child's Date of Birth")
@@ -100,7 +124,7 @@ class Campregistration(models.Model):
     camp_registration_id = fields.Many2one('camp.registration',string='Camp Registration')
 
     name = fields.Char(string='Name', default="New")
-    ref_code = fields.Char(string='Reference Code')
+    
 #     mother_fname = fields.Char(string='Mother/Guardian First Name')
 #     father_fname = fields.Char(string='Father/Guardian  first Name')
 #     mother_fam_name = fields.Char(string='Mother/Guardian Family Name')
@@ -118,13 +142,13 @@ class Campregistration(models.Model):
                                        ('2', 'Français'),
                                        ('3', 'Bilingual')], string='Language')
     
-    
+    is_camp_organizer = fields.Boolean(string='Is camp organizer')
     camp_organizer = fields.Char(string='Camp Organizer Name')
     camp_organizer_phone = fields.Char(string="Camp Organizer Tel. #")
     camp_organizer_email = fields.Char(string='Camp Organizer Email address')
     
     camp_date_time = fields.Datetime(string='Date and Time')
-    camp_location = fields.Char(string='Host First Name')
+    camp_host_name = fields.Char(string='Host First Name')
     camp_family_name = fields.Char(string='Host Family Name')
     camp_email = fields.Char(string='Host Email Address')
     camp_phone = fields.Char(string='Host Telephone #')
@@ -132,9 +156,11 @@ class Campregistration(models.Model):
     camp_city = fields.Char(string='City')
     camp_province = fields.Many2one('res.country.state',string='Province')
     camp_postal_code = fields.Char(string='Postal Code')
+    camp_location = fields.Text(string='Our camp will take place at a park (indicate park name and address')
     camp_rain_plan = fields.Char(string='Rain Plan (garage, basement, other)')
-    camp_dates = fields.Char(string='Dates hosting this camp')
+    camp_first_date = fields.Date(string='First Date hosting this camp')
     
+    is_more_camp_host = fields.Boolean(string='Our camp will have more than 1 host.')
     
     play_check = fields.Boolean(string='Are your kids allowed to play at the park? y/n')
 
@@ -151,6 +177,10 @@ class Campregistration(models.Model):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('active', 'Active')], string='State')
+    
+#     camp_week_selection_ids = fields.One2many('camp.week.selection', 'camp_registration_id', 'Camp Weeks Selection')
+    camp_date_selection_ids = fields.One2many('camp.date.selection', 'camp_registration_id', 'Camp Dates Selection')
+    
 
     @api.model
     def create(self, vals):
@@ -256,6 +286,7 @@ class Campregistration(models.Model):
             else:
                 raise UserError(_('Please add  product.'))
 
+
 class ChildDetails(models.Model):
     _name = "child.details"
     _description = "Child Details"
@@ -268,6 +299,7 @@ class ChildDetails(models.Model):
     child_medical_condition = fields.Text(string='Medical Conditions/Allergies')
     child_medicare = fields.Char(string='Medicare')
     camp_registration_id = fields.Many2one('camp.registration',string='Camp Registration')
+
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'

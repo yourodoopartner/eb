@@ -18,7 +18,7 @@
 	<t t-call="website.layout">
 		<div id="wrap">           
 	   		<div t-ignore="true">
-                        <section id="forms" class="col">
+            	<section id="forms" class="col">
 	                    <form id="camp_registration_form" action="/website_form/" method="post" class="s_website_form " enctype="multipart/form-data" data-model_name="camp.registration" data-success_page="/thank-you"  data-editable-form="false">
 	                        <br></br>
 	                        <div class="col-lg-12 text-center mb16">
@@ -40,7 +40,7 @@
 								<br></br> <br></br>                                
                             </div>
 	                        
-							<div class="col-lg-12 text-left mb16">
+							<div class="text-left">
 							    <h5><u><strong>PARTICIPANT (CAMPER) INFORMATION</strong></u></h5>
 							</div>	                        
 	                      <!--  <div class="form-group row form-field o_website_form_required_custom">
@@ -48,13 +48,14 @@
 	                            <div class="col-lg-7 col-md-8">
 	                                <input type="text" class="form-control o_website_form_input" name="name" t-att-value="request.params.get('name', '')" required=""/>
 	                            </div>
-	                        </div>
-	                        <div class="form-group row form-field">
-	                            <label class="col-lg-3 col-md-4 col-form-label" for="ref_code">Reference Code</label>
-	                            <div class="col-lg-7 col-md-8">
-	                                <input type="text" class="form-control o_website_form_input" name="ref_code" t-att-value="request.params.get('ref_code', '')" />
-	                            </div>
 	                        </div-->
+	                        
+	                        <div class="form-group row form-field o_website_form_required">
+	                            <label class="col-lg-3 col-md-4 col-form-label" for="child_name">Camp Code</label>
+	                            <div class="col-lg-7 col-md-8">
+	                                <input type="text" class="form-control o_website_form_input" name="ref_code" required="" t-att-value="request.params.get('ref_code', '')" />
+	                            </div>
+	                        </div>
 	                        <div class="form-group row form-field o_website_form_required">
 	                            <label class="col-lg-3 col-md-4 col-form-label" for="child_name">Child's First Name</label>
 	                            <div class="col-lg-7 col-md-8">
@@ -73,19 +74,9 @@
 	                            	<input type="date" name="child_dob" class="form-control o_website_form_input" t-att-value="request.params.get('child_dob', '')" />
 	                            
 	                            </div>
-	                                <!--input type="text" class="form-control datetimepicker-input" name="child_dob" t-att-value="request.params.get('child_dob', '')" />
-	                            </div>
-	                            <div class="col-md-7">
-                        <div class="input-group date" id="date_publish_container" data-target-input="nearest">
-                            <input type="text" class="form-control datepicker-input" data-target="#date_publish_container" id="date_publish"/>
-                            <div class="input-group-append" data-target="#date_publish_container" data-toggle="datepicker">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                            </div>
-                        </div>
-                    </div-->
 	                        </div>
 	                        
-	                        <div class="form-group row form-field">
+	                        <!--div class="form-group row form-field">
 	                            <label class="col-lg-3 col-md-4 col-form-label" for="total_days">Total # Days</label>
 	                            <div class="col-lg-7 col-md-8">
 	                                <input type="text" class="form-control o_website_form_input" name="total_days" t-att-value="request.params.get('total_days', 0)" />
@@ -96,7 +87,7 @@
 	                            <div class="col-lg-7 col-md-8">
 	                                <input type="text" class="form-control o_website_form_input" name="amount" t-att-value="request.params.get('amount', 0)" />
 	                            </div>
-	                        </div>
+	                        </div-->
 	                        
 	                        <div class="form-group row form-field o_website_form_required_custom">
 	                            <label class="col-lg-3 col-md-4 col-form-label" for="parent_name">Parent/Guardian First Name</label>
@@ -165,7 +156,7 @@
 	                            </div>
 	                        </div>
 					                        
-            				<div class="col-lg-12 text-left mb16">
+            				<div class="text-left">
 							    <h5><u><strong>EMERGENCY CONTACTS &amp; MEDICAL INFORMATION</strong></u></h5>
 							</div>	
 	                        <div class="form-group row form-field o_website_form_required">
@@ -255,36 +246,106 @@
 	                            </div>
 	                        </div>
     						
+    						<br></br>
+	                        <div class="text-left">
+							    <h5><u><strong>CAMP DATES SELECTION</strong></u></h5>
+							</div>	
+							<div>
+								Availability is Monday to Friday, for 9 weeks<br/><br/>
+	
+								AM session = 9:00AM - 12:00PM<br/>
+								PM session = 1:00 PM - 4:00PM<br/>
+								Full Day = 9:00AM - 3:30PM<br/>
+                            </div>
+                            <br/>
+                            <t t-set="weeks" t-value="weeks"/>
+				            <t t-if="weeks">
+				                <t t-foreach="weeks" t-as="week">
+			                		<strong><span t-field="week.name"/></strong><br/>
+			                		<div class="form-group  col-md-6">
+				                		<table class="table js_kanban" border="0">
+									        <thead>
+									            <!--tr>
+									                <t t-set="width" t-valuef="{{ round(100.0 / (len(objects) if objects else 1), 2) }}%"/>
+									                <t t-foreach="objects" t-as="obj">
+									                    <th t-att-width="width">
+									                        <div t-field="obj['column_id'].name" class="text-center"></div>
+									                    </th>
+									                </t>
+									            </tr-->
+									        </thead>
+									        <tbody>
+									            <tr style="background-color:lightgrey;">
+									            	<td>AM</td>
+									                <td><input type="checkbox" id="week_am_1" name="1_am_slot" t-att-value="week.id"/></td>
+									                <td><input type="checkbox" id="week_am_2" name="2_am_slot" t-att-value="week.id"/></td>
+									                <td><input type="checkbox" id="week_am_3" name="3_am_slot" t-att-value="week.id"/></td>
+									                <td><input type="checkbox" id="week_am_4" name="4_am_slot" t-att-value="week.id"/></td>
+									                <td><input type="checkbox" id="week_am_5" name="5_am_slot" t-att-value="week.id"/></td>
+									            </tr>
+									            <tr style="background-color:lightgrey;">
+									            	<td>PM</td>
+									                <td><input type="checkbox" id="week_pm_1" name="1_pm_slot" t-att-value="week.id"/></td>
+									                <td><input type="checkbox" id="week_pm_2" name="2_pm_slot" t-att-value="week.id"/></td>
+									                <td><input type="checkbox" id="week_pm_3" name="3_pm_slot" t-att-value="week.id"/></td>
+									                <td><input type="checkbox" id="week_pm_4" name="4_pm_slot" t-att-value="week.id"/></td>
+									                <td><input type="checkbox" id="week_pm_5" name="5_pm_slot" t-att-value="week.id"/></td>
+									            </tr>
+									            <tr style="background-color:lightgrey;">
+									            	<td>FULL DAY</td>
+									                <td><input type="checkbox" id="week_full_1" name="1_full_slot" t-att-value="week.id"/></td>
+									                <td><input type="checkbox" id="week_full_2" name="2_full_slot" t-att-value="week.id"/></td>
+									                <td><input type="checkbox" id="week_full_3" name="3_full_slot" t-att-value="week.id"/></td>
+									                <td><input type="checkbox" id="week_full_4" name="4_full_slot" t-att-value="week.id"/></td>
+									                <td><input type="checkbox" id="week_full_5" name="5_full_slot" t-att-value="week.id"/></td>
+									            </tr>
+									        </tbody>
+									    </table>
+									</div>
+								    <br/>            
+		                        </t>
+			                </t>
+							
+							
 	                        <br></br>
-	                        <div class="col-lg-12 text-left mb16">
+	                        <div class="text-left">
 							    <h5><u><strong>PERMISSIONS</strong></u></h5>
 							</div>	 
-	                        <div class="form-group  col-md-12 o_website_form_required_custom">
-                                 <input type="checkbox" name="condition_one"/>
-                                 <label class="col-form-label" for="condition_one">I have ready and agree to the terms &amp; conditions and waiver of liability.</label>
-                             </div>
-                             <div class="form-group  col-md-12 o_website_form_required_custom">
-                                 <input type="checkbox" name="condition_two"/>
-                                 <label class="col-form-label" for="condition_two">I hereby grant permission to Everblast Backyard Camp to take photographs and video of my child to be used for promotional, instructional, educational or commercial purposes.</label>
-                             </div>
+	                        <div class="form-group o_website_form_required_custom">
+                                <input type="checkbox" name="condition_one"/>
+                                <label class="col-form-label" for="condition_one">I have ready and agree to the terms &amp; conditions and waiver of liability.</label>
+                            </div>
+                            <div class="form-group o_website_form_required_custom">
+                                <input type="checkbox" name="condition_two"/>
+                                <label class="col-form-label" for="condition_two">I hereby grant permission to Everblast Backyard Camp to take photographs and video of my child to be used for promotional, instructional, educational or commercial purposes.</label>
+                            </div>
                              
-	                         <br></br>
-	                         <div class="form-group row form-field">
-	                            <label class="col-lg-3 col-md-4 col-form-label" for="comments">Additional Information / Comments</label>
-	                            <div class="col-lg-7 col-md-8">
-	                                <input type="text" class="form-control o_website_form_input" name="comments" t-att-value="request.params.get('comments', '')" />
-	                            </div>
+	                        <br></br>
+	                        <div class="form-group row form-field">
+	                           <label class="col-lg-3 col-md-4 col-form-label" for="comments">Additional Information / Comments</label>
+	                           <div class="col-lg-7 col-md-8">
+	                               <input type="text" class="form-control o_website_form_input" name="comments" t-att-value="request.params.get('comments', '')" />
+	                           </div>
 	                        </div>
-	                         
-                         	<br></br><br></br>
-	                   	 	<strong>The following section must be completed by the Camp Organiser only.</strong>
-	                    	<br></br><br></br>
-	                    	<h5><u><strong>Camp Information</strong></u></h5>
+	                        
+	                        <br></br><br></br>
+                         	
+                         	<div class="form-group">
+	                            <input type="checkbox" class="o_website_form_input" name="is_camp_organizer" id="is_camp_organizer" t-att-value="request.params.get('is_camp_organizer', '')" />
+	                            <label class="col-form-label" for="is_camp_organizer">I am the Camp Organizer</label>
+	                        </div>
+                         	<div class="if_camp_organizer">
+		                        <strong>The following section must be completed by the Camp Organiser only.</strong>
+		                    	<br></br>
+	                    	</div>
+	                    	<div class="if_camp_organizer">
+	                    		<h5><u><strong>Camp Information</strong></u></h5>
+	                    	</div>
 	                    	<br></br>
-		                   	<div class="form-row">
+		                   	<div class="form-row if_camp_organizer">
                                 <div t-attf-class="form-group col-md-6 ">
                                     <label class="col-form-label" for="camp_organizer">Camp Organizer Name</label>
-                                    <input type="text"   id="camp_organizer" name="camp_organizer" required="" class="form-control" />
+                                    <input type="text" id="camp_organizer" name="camp_organizer" required="" class="form-control" />
                                 </div>
                                 <br></br>
                                 <div t-attf-class="form-group col-md-6 ">
@@ -295,23 +356,26 @@
                                     <label class="col-form-label" for="camp_organizer_email">Camp Organizer Email address</label>
                                     <input type="email" name="camp_organizer_email" class="form-control" />
                                 </div>
-                                
-                                <br></br>
+                            </div> 
+                            <div class="if_camp_organizer">
+                            	Please provide the host family information below to indicate where your camp will take place. If your camp will have more than 1 host, please provide the information for the 1st day only and ensure to check the box below indicating that your camp will have more than 1 host location.
+                            </div> 
+                            <div class="form-row if_camp_organizer"> 
                                 <div t-attf-class="form-group col-md-6 ">
-                                    <label class="col-form-label" for="camp_location">Host First Name</label>
-                                    <input type="text" name="camp_location" class="form-control" />
+                                    <label class="col-form-label" for="camp_host_name">Host First Name</label>
+                                    <input type="text" name="camp_host_name" class="form-control" />
                                 </div>
                                 <div class="form-group  col-md-6">
                                     <label class="col-form-label" for="camp_family_name">Host Family Name</label>
                                     <input type="text" name="camp_family_name" class="form-control"/>
                                 </div>
                                 <div class="form-group  col-md-6">
-                                    <label class="col-form-label" for="camp_email">Host Email Address</label>
-                                    <input type="email" name="camp_email" class="form-control"/>
-                                </div>
-                                <div class="form-group  col-md-6">
                                     <label class="col-form-label" for="camp_phone">Host Telephone #</label>
                                     <input type="tel" name="camp_phone" class="form-control"/>
+                                </div>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="camp_email">Host Email Address</label>
+                                    <input type="email" name="camp_email" class="form-control"/>
                                 </div>
                                 <div class="form-group  col-md-6">
                                     <label class="col-form-label" for="camp_street">Civic # &amp; Street</label>
@@ -325,16 +389,25 @@
                                     <label class="col-form-label" for="camp_postal_code">Postal Code</label>
                                     <input type="text" name="camp_postal_code" class="form-control"/>
                                 </div>
+                                <div class="form-group  col-md-6">
+                                    <label class="col-form-label" for="camp_location">Our camp will take place at a park (indicate park name and address)</label>
+                                    <input type="text" name="camp_location" class="form-control"/>
+                                </div>
+                                
                                 <br></br>
                                 <div class="form-group  col-md-6">
                                     <label class="col-form-label" for="camp_rain_plan">Rain Plan (garage, basement, other)</label>
                                     <input type="text" name="camp_rain_plan" class="form-control"/>
                                 </div>
                                 <div class="form-group  col-md-6">
-                                    <label class="col-form-label" for="camp_dates">Dates hosting this camp</label>
-                                    <input type="text" name="camp_dates" class="form-control"/>
+                                    <label class="col-form-label" for="camp_first_date">First Date hosting this camp</label>
+	                            	<input type="date" name="camp_first_date" class="form-control o_website_form_input" t-att-value="request.params.get('camp_first_date', '')" />
                                 </div>
                             </div>
+                            <div class="form-row if_camp_organizer">
+	                            <input type="checkbox" class="o_website_form_input" name="is_more_camp_host" id="is_more_camp_host" t-att-value="request.params.get('is_more_camp_host', '')" />
+	                            <label class="col-form-label" for="is_more_camp_host">Our camp will have more than 1 host</label>
+	                        </div>
 		                    <br></br><br></br>
 	                        <div class="form-group row">
 	                            <div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
@@ -343,7 +416,7 @@
 	                            </div>
 	                        </div>
 	                    </form>
-	                    </section>
+	        	</section>
 	      	</div>
 	    </div>
 	</t>           

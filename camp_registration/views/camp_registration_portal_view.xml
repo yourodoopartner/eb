@@ -401,7 +401,7 @@
                                 </div>
                                 <div class="form-group  col-md-6">
                                     <label class="col-form-label" for="camp_first_date">First Date hosting this camp</label>
-	                            	<input type="date" name="camp_first_date" class="form-control o_website_form_input" t-att-value="request.params.get('camp_first_date', '')" />
+	                            	<input type="date" name="camp_first_date" class="form-control" t-att-value="request.params.get('camp_first_date', '')" />
                                 </div>
                             </div>
                             <div class="form-row if_camp_organizer">

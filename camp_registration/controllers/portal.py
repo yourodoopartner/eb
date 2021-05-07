@@ -12,9 +12,6 @@ from odoo.exceptions import ValidationError
 from odoo.addons.website_form.controllers.main import WebsiteForm
 
 
-
-
-
 class CampRegistration(http.Controller):
      
     @http.route(['/campregistration'], type='http', auth="public", website=True)
@@ -121,16 +118,17 @@ class WebsiteForm(WebsiteForm):
 #             }   
                        
         dob = ''
-        if values.get('child_dob',  'False'):
+        if values.get('child_dob', ''):
             if values['child_dob']:
                 dob = values['child_dob']
                 del values['child_dob']
         
         camp_first_date = ''
-        if values.get('camp_first_date',  'False'):
+        if values.get('camp_first_date', ''):
             if values['camp_first_date']:
                 camp_first_date = values['camp_first_date']
                 del values['camp_first_date']
+                
 #         if values.get('dietary_restrictions',  ''):
 #             print('ddddddddddddddddd',values.get('dietary_restrictions',  ''))
 #             dob = values['child_dob']

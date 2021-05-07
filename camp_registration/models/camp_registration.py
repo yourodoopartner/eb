@@ -165,7 +165,7 @@ class Campregistration(models.Model):
     play_check = fields.Boolean(string='Are your kids allowed to play at the park? y/n')
 
     #marketting
-    condition_one = fields.Boolean(string='I have ready and agree to the terms &amp; conditions and waiver of liability. ')
+    condition_one = fields.Boolean(string='I have read and agree to the terms &amp; conditions and waiver of liability. ')
     condition_two = fields.Boolean(string='I hereby grant permission to Everblast Backyard Camp to take photographs and video of my child to be used for promotional, instructional, educational or commercial purposes.')
 
     #terms and condition

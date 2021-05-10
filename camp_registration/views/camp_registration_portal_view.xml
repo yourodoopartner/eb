@@ -14,7 +14,8 @@
 </template>
 
 <template id="camp_registration_form" name="Camp Registration">
-<t t-set="no_footer">1</t>
+	<t t-set="no_footer">1</t>
+	<t t-set="no_header">1</t>
 	<t t-call="website.layout">
 		<div id="wrap">           
 	   		<div t-ignore="true">
@@ -407,7 +408,7 @@
                                 </div>
                             </div>
                             <div class="form-row if_camp_organizer">
-	                            <input type="checkbox" class="o_website_form_input" name="is_more_camp_host" id="is_more_camp_host" t-att-value="request.params.get('is_more_camp_host', '')" />
+	                            <input type="checkbox" class="o_website_form_input" name="is_more_camp_host" id="is_more_camp_host" />
 	                            <label class="col-form-label" for="is_more_camp_host">Our camp will have more than 1 host</label>
 	                        </div>
 		                    <br></br><br></br>

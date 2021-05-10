@@ -14,6 +14,7 @@
         <field name="arch" type="xml">
             <t name="Thanks (Contact us)" t-name="camp_registration.camp_registration_thanks">
                 <t t-set="no_footer">1</t>
+                <t t-set="no_header">1</t>
                 <t t-call="website.layout">
                   <div id="wrap">
                     <div class="oe_structure" id="oe_structure_website_form_contact_us_thanks_1"/>

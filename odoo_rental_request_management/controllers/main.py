@@ -11,7 +11,7 @@ from odoo import http, _, tools, fields, SUPERUSER_ID
 from odoo.http import request
 from dateutil.parser import parse
 
-from odoo.tools import format_datetime, format_date, is_html_empty
+from odoo.tools import format_datetime, format_date
 
 
 class CustomRentalSale(http.Controller):

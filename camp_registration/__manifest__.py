@@ -21,14 +21,14 @@
 ##############################################################################
 {
     'name': 'Camp Registration',
-    'version': '0.1',
+    'version': '0.2',
     'category': 'custom',
     'summary': 'Camp Registration',
     'description': """
         Camp Registration""",
     'author' : 'BroadTech IT Solutions Pvt Ltd',
     'website' : 'http://www.broadtech-innovations.com',
-    'depends': ['website_form','sale'],
+    'depends': ['website_form', 'sale', 'odoo_rental_request_management'],
     'images': [],
     'data': [
         'data/camp_registration_data.xml',

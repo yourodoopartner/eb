@@ -1,0 +1,15 @@
+<odoo>
+
+	<template id="portal_invoice_page_payment_inherit_paynow" name="Pay Now visibility" inherit_id="account_payment.portal_invoice_page_inherit_payment">
+        <xpath expr="//div/a[@data-target='#pay_with']" position="attributes">
+			<attribute name="t-if">invoice.state == 'posted' and invoice.invoice_payment_state == 'not_paid' and invoice.visible_pay_now and invoice.amount_total and invoice.type == 'out_invoice' and (pending_manual_txs or not tx_ids)</attribute>
+        </xpath>
+    </template>
+
+	<template id="portal_my_invoices_payment_inherit_paynow" name="Pay Now visibility on My Invoices" inherit_id="account_payment.portal_my_invoices_payment">
+        <xpath expr="//td[@class='text-center']/a[@class='btn btn-sm btn-primary']" position="attributes">
+			<attribute name="t-if">invoice.state == 'posted' and invoice.invoice_payment_state == 'not_paid' and invoice.visible_pay_now and invoice.amount_total and invoice.type == 'out_invoice' and (pending_manual_txs or not tx_ids or invoice.amount_residual)</attribute>
+        </xpath>
+    </template>
+
+</odoo>

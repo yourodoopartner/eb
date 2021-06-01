@@ -80,7 +80,7 @@
             <field name="arch" type="xml">
                 <form string="Camp Registration">
                 	<header>
-						<button name="create_sale_order" string="Create Sale Order" type="object" class="btn-primary" attrs="{'invisible': [('sale_order_id', '!=',False)]}"/>/>
+						<button name="create_rental_quote" string="Create Rental Quote" type="object" class="btn-primary" attrs="{'invisible': [('sale_order_id', '!=',False)]}"/>/>
                 		<field name="state" widget="statusbar"  statusbar_visible="active,scrapped"/>
                 	</header>
                 	<sheet>
@@ -89,6 +89,7 @@
                         		<field name="ref_code"/>
                         	</group>
                         	<group>
+								<field name="sale_order_id"/>
                         	</group>
                         	<group>
                         		<field name="child_name"/>
@@ -111,7 +112,6 @@
                         	<group>
                         		<field name="email"/>
 								<field name="tele_phone"/>
-								<field name="sale_order_id"/>
                         	</group>
                         </group>
 						<group>
@@ -129,7 +129,7 @@
                         	<field name="dietary_restriction_details" attrs="{'invisible': [('dietary_restrictions', '=', False)]}" />
                         	<field name="child_medical_condition" />
                         	<field name="comments" />
-                       </group>
+                        </group>
                         
                         <notebook>
                             <page string="Pick up Infomation">
@@ -149,6 +149,12 @@
 	                                    <field name="slot"/>
                                     </tree>
                                 </field>
+                                <group name="total_days" col="6">
+	                                <group class="oe_subtotal_footer oe_right" colspan="2" name="days_total">
+	                                    <field name="total_camp_days"/>
+	                                </group>
+	                                <div class="oe_clear"/>
+	                            </group>
                             </page>
                             <page string="Camp Information" >
 	                            <group>

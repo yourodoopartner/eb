@@ -202,72 +202,72 @@ class Campregistration(models.Model):
         if vals.get('name', 'New') == 'New':
             vals['name'] = self.env['ir.sequence'].next_by_code(
                 'camp.registration') or 'New'
-        if vals['parent_name']:
-            partner_id=self.env['res.partner'].search([('name','=',vals['parent_name']),('phone','=',vals['tele_phone'])])
-            camp_product = self.env['product.product'].search([('camp_registration_product', '=', '1')], limit=1)
-            if camp_product:
-                
-                total_camp_days = 0
-                if vals.get('camp_date_selection_ids'):
-                    for camp_date_selection_id in vals['camp_date_selection_ids']:
-                        if camp_date_selection_id[2]['slot'] == 'AM' or camp_date_selection_id[2]['slot'] == 'PM':
-                           total_camp_days += 0.5
-                        elif camp_date_selection_id[2]['slot'] == 'full':
-                            total_camp_days += 1
-                            
-                if partner_id:
-                    sale_order_obj = self.env['sale.order'].create({
-                        'partner_id': partner_id.id,
-                        'partner_invoice_id': partner_id.id,
-                        'partner_shipping_id': partner_id.id,
-                        'is_custom_rental_quote': True,
-                        'order_line': [(0, 0, {
-                            'name': 'Camp Day',
-                            'product_id': camp_product.id,
-                            'product_uom_qty': total_camp_days,
-                            # 'custom_rent_days': total_camp_days,
-                            'product_uom': camp_product.uom_id.id,
-                            'price_unit': camp_product.list_price,
-                            
-                        })],
-                        'pricelist_id': self.env.ref('product.list0').id,
-                        
-                    })
-                    vals['sale_order_id'] = sale_order_obj.id
-                else :
-                
-                    new_partner_id = self.env['res.partner'].create({
-                        'name': vals['parent_name'],
-                        'is_company': True,
-                        'email': vals.get('email'),
-                        'phone': vals.get('tele_phone')
-                    })
-                    
-                    sale_order_obj =self.env['sale.order'].create({
-                        'partner_id': new_partner_id.id,
-                        'partner_invoice_id': new_partner_id.id,
-                        'partner_shipping_id': new_partner_id.id,
-                        'is_custom_rental_quote': True,
-                        'order_line': [(0, 0, {
-                            'name': 'Camp Day',
-                            'product_id':camp_product.id,
-                            'product_uom_qty': total_camp_days,
-                            # 'custom_rent_days': total_camp_days,
-                            'product_uom': camp_product.uom_id.id,
-                            'price_unit': camp_product.list_price,
-                        })],
-                        'pricelist_id': self.env.ref('product.list0').id,
-                        
-                     })
-                    vals['sale_order_id'] = sale_order_obj.id
-            else :
-                return super(Campregistration, self).create(vals)
+        # if vals['parent_name']:
+            # partner_id=self.env['res.partner'].search([('name','=',vals['parent_name']),('phone','=',vals['tele_phone'])], limit=1)
+            # camp_product = self.env['product.product'].search([('camp_registration_product', '=', '1')], limit=1)
+            # if camp_product:
+            #
+                # total_camp_days = 0
+                # if vals.get('camp_date_selection_ids'):
+                    # for camp_date_selection_id in vals['camp_date_selection_ids']:
+                        # if camp_date_selection_id[2]['slot'] == 'AM' or camp_date_selection_id[2]['slot'] == 'PM':
+                           # total_camp_days += 0.5
+                        # elif camp_date_selection_id[2]['slot'] == 'full':
+                            # total_camp_days += 1
+                            #
+                # if partner_id:
+                    # sale_order_obj = self.env['sale.order'].create({
+                        # 'partner_id': partner_id.id,
+                        # 'partner_invoice_id': partner_id.id,
+                        # 'partner_shipping_id': partner_id.id,
+                        # 'is_custom_rental_quote': True,
+                        # 'order_line': [(0, 0, {
+                            # 'name': 'Camp Day',
+                            # 'product_id': camp_product.id,
+                            # 'product_uom_qty': total_camp_days,
+                            # # 'custom_rent_days': total_camp_days,
+                            # 'product_uom': camp_product.uom_id.id,
+                            # 'price_unit': camp_product.list_price,
+                            #
+                        # })],
+                        # 'pricelist_id': self.env.ref('product.list0').id,
+                        #
+                    # })
+                    # vals['sale_order_id'] = sale_order_obj.id
+                # else :
+                #
+                    # new_partner_id = self.env['res.partner'].create({
+                        # 'name': vals['parent_name'],
+                        # 'is_company': True,
+                        # 'email': vals.get('email'),
+                        # 'phone': vals.get('tele_phone')
+                    # })
+                    #
+                    # sale_order_obj =self.env['sale.order'].create({
+                        # 'partner_id': new_partner_id.id,
+                        # 'partner_invoice_id': new_partner_id.id,
+                        # 'partner_shipping_id': new_partner_id.id,
+                        # 'is_custom_rental_quote': True,
+                        # 'order_line': [(0, 0, {
+                            # 'name': 'Camp Day',
+                            # 'product_id':camp_product.id,
+                            # 'product_uom_qty': total_camp_days,
+                            # # 'custom_rent_days': total_camp_days,
+                            # 'product_uom': camp_product.uom_id.id,
+                            # 'price_unit': camp_product.list_price,
+                        # })],
+                        # 'pricelist_id': self.env.ref('product.list0').id,
+                        #
+                     # })
+                    # vals['sale_order_id'] = sale_order_obj.id
+            # else :
+                # return super(Campregistration, self).create(vals)
 
         return super(Campregistration, self).create(vals)
 
     def create_rental_quote(self):
         if self.parent_name:
-            partner_id = self.env['res.partner'].search([('name','=',self.parent_name)])
+            partner_id = self.env['res.partner'].search([('name','=',self.parent_name)], limit=1)
             camp_product = self.env['product.product'].search([('camp_registration_product', '=', '1')], limit=1)
             if camp_product:
                 if partner_id:

@@ -36,6 +36,7 @@
         'views/camp_registration_portal_view.xml',
         'views/camp_registration_view.xml',
         'views/thankspage.xml',
+        'views/sale_view.xml',
         ],
     'installable': True,
     'application': True,

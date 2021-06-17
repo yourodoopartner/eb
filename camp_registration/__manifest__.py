@@ -21,7 +21,7 @@
 ##############################################################################
 {
     'name': 'Camp Registration',
-    'version': '0.2',
+    'version': '0.3',
     'category': 'custom',
     'summary': 'Camp Registration',
     'description': """
@@ -36,6 +36,7 @@
         'views/camp_registration_portal_view.xml',
         'views/camp_registration_view.xml',
         'views/thankspage.xml',
+        'views/sale_view.xml',
         ],
     'installable': True,
     'application': True,

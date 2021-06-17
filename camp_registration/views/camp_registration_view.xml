@@ -80,7 +80,8 @@
             <field name="arch" type="xml">
                 <form string="Camp Registration">
                 	<header>
-						<button name="create_rental_quote" string="Create Rental Quote" type="object" class="btn-primary" attrs="{'invisible': [('sale_order_id', '!=',False)]}"/>/>
+						<button name="create_rental_quote" string="Create Rental Quote" type="object" class="btn-primary" attrs="{'invisible': [('sale_order_id', '!=',False)]}"/>
+						<button name="update_sale_camp_info" string="Update Rental Quote" type="object" class="btn-primary" invisible="1"/>
                 		<field name="state" widget="statusbar"  statusbar_visible="active,scrapped"/>
                 	</header>
                 	<sheet>

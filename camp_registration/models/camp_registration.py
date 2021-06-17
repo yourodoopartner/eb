@@ -9,6 +9,7 @@ class PickupPeopleDetails(models.Model):
     first_name = fields.Char(string='First Name')
     last_name = fields.Char(string='Last Name')
     camp_registration_id = fields.Many2one('camp.registration',string='Camp Registration')
+    sale_order_id = fields.Many2one('sale.order', string='Rental Quote')
     
     
 class CampWeekSelection(models.Model):
@@ -31,6 +32,7 @@ class CampDateSelection(models.Model):
     date = fields.Date(string='Date')
     slot = fields.Selection([('AM', 'AM'), ('PM', 'PM'), ('full', 'Full Day')], string='Slot')
     camp_registration_id = fields.Many2one('camp.registration',string='Camp Registration')
+    sale_order_id = fields.Many2one('sale.order', string='Rental Quote')
     
     
 class Campregistration(models.Model):
@@ -265,13 +267,64 @@ class Campregistration(models.Model):
 
         return super(Campregistration, self).create(vals)
 
+    def get_camp_vals(self):
+        vals = {}
+        if self.parent_name:
+            vals = {
+                'camp_registration_id': self.id,
+                'camp_ref_code': self.ref_code,
+                'child_name': self.child_name,
+                'child_family_name': self.child_family_name,
+                'child_dob': self.child_dob,
+                'parent_name': self.parent_name,
+                'parent_family_name': self.parent_family_name,
+                'campreg_civic_number': self.civic_number,
+                'campreg_city': self.city,
+                'campreg_postal_code': self.postal_code,
+                'campreg_email': self.email,
+                'campreg_tele_phone': self.tele_phone,
+                'child_age': self.child_age,
+                'child_gender': self.child_gender,
+                'emergancy_name': self.emergancy_name,
+                'emergancy_contact_tele': self.emergancy_contact_tele,
+                'dietary_restrictions': self.dietary_restrictions,
+                'dietary_restriction_details': self.dietary_restriction_details,
+                'child_medical_condition': self.child_medical_condition,
+                'campreg_comments': self.comments,
+                'is_camp_organizer': self.is_camp_organizer,
+                'camp_organizer': self.camp_organizer,
+                'camp_organizer_phone': self.camp_organizer_phone,
+                'camp_organizer_email': self.camp_organizer_email,
+                'camp_date_time': self.camp_date_time,
+                'camp_host_name': self.camp_host_name,
+                'camp_family_name': self.camp_family_name,
+                'camp_email': self.camp_email,
+                'camp_phone': self.camp_phone,
+                'camp_street': self.camp_street,
+                'camp_city': self.camp_city,
+                'camp_province': self.camp_province,
+                'camp_postal_code': self.camp_postal_code,
+                'camp_location': self.camp_location,
+                'camp_rain_plan': self.camp_rain_plan,
+                'camp_first_date': self.camp_first_date,
+                'is_more_camp_host': self.is_more_camp_host,
+                'play_check': self.play_check,
+                'camp_condition_one': self.condition_one,
+                'camp_condition_two': self.condition_two,
+                'camp_terms_condition': self.terms_condition,
+                'pick_up_people_ids': [(6, 0, self.pick_up_people_ids.ids)],
+                'camp_date_selection_ids': [(6, 0, self.camp_date_selection_ids.ids)],
+            }
+        return vals
+    
     def create_rental_quote(self):
         if self.parent_name:
             partner_id = self.env['res.partner'].search([('name','=',self.parent_name)], limit=1)
             camp_product = self.env['product.product'].search([('camp_registration_product', '=', '1')], limit=1)
+            vals = self.get_camp_vals()
             if camp_product:
                 if partner_id:
-                    sale_order_obj = self.env['sale.order'].create({
+                    vals.update({
                         'partner_id': partner_id.id,
                         'partner_invoice_id': partner_id.id,
                         'partner_shipping_id': partner_id.id,
@@ -285,19 +338,17 @@ class Campregistration(models.Model):
                             'price_unit': camp_product.list_price,
                         })],
                         'pricelist_id': self.env.ref('product.list0').id,
-
-                    })
+                        })
+                    sale_order_obj = self.env['sale.order'].create(vals)
                     self.sale_order_id = sale_order_obj.id
                 else :
-
                     new_partner_id = self.env['res.partner'].create({
                         'name': self.parent_name,
                         'is_company': False,
                         'email': self.email,
                         'phone': self.tele_phone
                     })
-
-                    sale_order_obj =self.env['sale.order'].create({
+                    vals.update({
                         'partner_id': new_partner_id.id,
                         'partner_invoice_id': new_partner_id.id,
                         'partner_shipping_id': new_partner_id.id,
@@ -311,12 +362,18 @@ class Campregistration(models.Model):
                             'price_unit': camp_product.list_price,
                         })],
                         'pricelist_id': self.env.ref('product.list0').id,
-
                      })
+                    sale_order_obj = self.env['sale.order'].create(vals)
                     self.sale_order_id = sale_order_obj.id
             else:
                 raise UserError(_('Please add  product.'))
 
+    def update_sale_camp_info(self):
+        camp_objs = self.search([('sale_order_id','!=', False)])
+        for camp_obj in camp_objs:
+            vals = camp_obj.get_camp_vals()
+            camp_obj.sale_order_id.write(vals)
+            
 
 class ChildDetails(models.Model):
     _name = "child.details"

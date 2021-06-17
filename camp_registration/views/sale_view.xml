@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_inherit_campreg" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.campreg</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[last()]" position="after">
+                <page name="camp_reg_info" string="Camp Information">
+                    <group>
+                       	<group>
+                       		<field name="camp_ref_code"/>
+                       	</group>
+                       	<group>
+							<field name="camp_registration_id"/>
+                       	</group>
+                       	<group>
+                       		<field name="child_name"/>
+                       		<field name="child_family_name"/>
+                       		<field name="child_dob"/>
+                       	</group>
+                       	<group>
+                       		<field name="parent_name" />
+                       		<field name="parent_family_name"/>
+                       	</group>
+                   	</group>
+					<group>
+                       	<group>
+                       		<field name="campreg_civic_number"/>
+                       		<field name="campreg_city"/>
+                       		<field name="campreg_postal_code"/>
+                       	</group>
+                       	<group>
+                       		<field name="campreg_email"/>
+							<field name="campreg_tele_phone"/>
+                       	</group>
+                    </group>
+					<group>
+						<group>
+                       		<field name="child_age" />
+                       		<field name="child_gender" />
+                       	</group>
+                       	<group>
+                       		<field name="emergancy_name" />
+                       		<field name="emergancy_contact_tele" />
+                       	</group>
+                    </group>
+                    <group>
+                       	<field name="dietary_restrictions" widget="radio"/>
+                       	<field name="dietary_restriction_details" attrs="{'invisible': [('dietary_restrictions', '=', False)]}" />
+                       	<field name="child_medical_condition" />
+                       	<field name="campreg_comments" />
+                    </group>
+                    <notebook>
+                    	<page string="Pick up Information">
+                       	 	<field name="pick_up_people_ids" required="0">
+                       	 		<tree editable="bottom">
+                                    <field name="first_name"/>
+                                    <field name="last_name"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Camp Dates Selection">
+                       	 	<field name="camp_date_selection_ids" required="0">
+                    	 		<tree editable="bottom">
+	                                <field name="week_id"/>
+	                                <field name="date"/>
+	                                <field name="slot"/>
+                                </tree>
+                            </field>
+                            <group name="total_days" col="6">
+                            	<group class="oe_subtotal_footer oe_right" colspan="2" name="days_total">
+                                	<field name="total_camp_days"/>
+                             	</group>
+                             	<div class="oe_clear"/>
+                         	</group>
+                        </page>
+                        <page string="Camp Information">
+                            <group>
+                             	<group string="Camp Organizer Identification">
+                            		<field name="camp_organizer" style="width:100%%"/>
+                            		<field name="camp_organizer_phone" style="width:100%%"/>
+                            		<field name="camp_organizer_email" style="width:100%%"/>
+                           		</group>
+	                            <group string="Camp Host Information">
+                                	<field name="camp_host_name"/>
+                            		<field name="camp_family_name" />
+                            		<field name="camp_email" />
+                            		<field name="camp_phone" />
+                            		<field name="camp_street" />
+                            		<field name="camp_city" />
+                            		<field name="camp_postal_code"/>
+                            		<field name="camp_location"/>
+                            		<field name="camp_rain_plan"/>
+                            		<field name="camp_first_date"/>
+                            		<field name="is_more_camp_host"/>
+                            	</group>
+                           	</group>
+
+                            <div class="oe_title">
+								<table>
+									<tr>
+										<td style="width:10%">
+                           					<field name='camp_condition_one'/>
+										</td>
+										<td>
+   										<label for="camp_condition_one" class="oe-edit-only"/>
+									</td>
+									</tr>
+								</table>
+							 </div>
+							 <div class="oe_title">
+								<table>
+									<tr>
+										<td style="width:10%">
+                           					<field name='camp_condition_two'/>
+										</td>
+										<td>
+   										<label for="camp_condition_two" class="oe-edit-only"/>
+									</td>
+									</tr>
+								</table>
+							</div>
+                       	</page>
+                        <page string="Terms and Conditions">
+                       		<field name="camp_terms_condition" style="width:100%%" readonly="1"/>
+                        </page>
+                	</notebook>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

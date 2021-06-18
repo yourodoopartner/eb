@@ -319,7 +319,10 @@ class Campregistration(models.Model):
     
     def create_rental_quote(self):
         if self.parent_name:
-            partner_id = self.env['res.partner'].search([('name','=',self.parent_name)], limit=1)
+            p_name = self.parent_name
+            if self.parent_family_name:
+                p_name = self.parent_name+' '+self.parent_family_name
+            partner_id = self.env['res.partner'].search([('name','=',p_name)], limit=1)
             camp_product = self.env['product.product'].search([('camp_registration_product', '=', '1')], limit=1)
             vals = self.get_camp_vals()
             if camp_product:
@@ -341,12 +344,18 @@ class Campregistration(models.Model):
                         })
                     sale_order_obj = self.env['sale.order'].create(vals)
                     self.sale_order_id = sale_order_obj.id
-                else :
+                else:
+                    p_name = self.parent_name
+                    if self.parent_family_name:
+                        p_name = self.parent_name+' '+self.parent_family_name
                     new_partner_id = self.env['res.partner'].create({
-                        'name': self.parent_name,
+                        'name': p_name,
                         'is_company': False,
                         'email': self.email,
-                        'phone': self.tele_phone
+                        'phone': self.tele_phone,
+                        'street': self.civic_number,
+                        'city': self.city,
+                        'zip': self.postal_code
                     })
                     vals.update({
                         'partner_id': new_partner_id.id,

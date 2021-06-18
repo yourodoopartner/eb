@@ -5,55 +5,58 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
+        	<xpath expr="//field[@name='partner_shipping_id']" position="after">
+			   <field name="animator"/>
+			</xpath>
             <xpath expr="//page[last()]" position="after">
                 <page name="camp_reg_info" string="Camp Information">
                     <group>
                        	<group>
-                       		<field name="camp_ref_code"/>
+                       		<field name="camp_ref_code" readonly="1"/>
                        	</group>
                        	<group>
-							<field name="camp_registration_id"/>
+							<field name="camp_registration_id" readonly="1"/>
                        	</group>
                        	<group>
-                       		<field name="child_name"/>
-                       		<field name="child_family_name"/>
-                       		<field name="child_dob"/>
+                       		<field name="child_name" readonly="1"/>
+                       		<field name="child_family_name" readonly="1"/>
+                       		<field name="child_dob" readonly="1"/>
                        	</group>
                        	<group>
-                       		<field name="parent_name" />
-                       		<field name="parent_family_name"/>
+                       		<field name="parent_name" readonly="1"/>
+                       		<field name="parent_family_name" readonly="1"/>
                        	</group>
                    	</group>
 					<group>
                        	<group>
-                       		<field name="campreg_civic_number"/>
-                       		<field name="campreg_city"/>
-                       		<field name="campreg_postal_code"/>
+                       		<field name="campreg_civic_number" readonly="1"/>
+                       		<field name="campreg_city" readonly="1"/>
+                       		<field name="campreg_postal_code" readonly="1"/>
                        	</group>
                        	<group>
-                       		<field name="campreg_email"/>
-							<field name="campreg_tele_phone"/>
+                       		<field name="campreg_email" readonly="1"/>
+							<field name="campreg_tele_phone" readonly="1"/>
                        	</group>
                     </group>
 					<group>
 						<group>
-                       		<field name="child_age" />
-                       		<field name="child_gender" />
+                       		<field name="child_age" readonly="1"/>
+                       		<field name="child_gender" readonly="1"/>
                        	</group>
                        	<group>
-                       		<field name="emergancy_name" />
-                       		<field name="emergancy_contact_tele" />
+                       		<field name="emergancy_name" readonly="1"/>
+                       		<field name="emergancy_contact_tele" readonly="1"/>
                        	</group>
                     </group>
                     <group>
-                       	<field name="dietary_restrictions" widget="radio"/>
-                       	<field name="dietary_restriction_details" attrs="{'invisible': [('dietary_restrictions', '=', False)]}" />
-                       	<field name="child_medical_condition" />
-                       	<field name="campreg_comments" />
+                       	<field name="dietary_restrictions" widget="radio" readonly="1"/>
+                       	<field name="dietary_restriction_details" attrs="{'invisible': [('dietary_restrictions', '=', False)]}" readonly="1"/>
+                       	<field name="child_medical_condition" readonly="1"/>
+                       	<field name="campreg_comments" readonly="1"/>
                     </group>
                     <notebook>
                     	<page string="Pick up Information">
-                       	 	<field name="pick_up_people_ids" required="0">
+                       	 	<field name="pick_up_people_ids" required="0" readonly="1">
                        	 		<tree editable="bottom">
                                     <field name="first_name"/>
                                     <field name="last_name"/>
@@ -61,7 +64,7 @@
                             </field>
                         </page>
                         <page string="Camp Dates Selection">
-                       	 	<field name="camp_date_selection_ids" required="0">
+                       	 	<field name="camp_date_selection_ids" required="0" readonly="1">
                     	 		<tree editable="bottom">
 	                                <field name="week_id"/>
 	                                <field name="date"/>
@@ -78,22 +81,22 @@
                         <page string="Camp Information">
                             <group>
                              	<group string="Camp Organizer Identification">
-                            		<field name="camp_organizer" style="width:100%%"/>
-                            		<field name="camp_organizer_phone" style="width:100%%"/>
-                            		<field name="camp_organizer_email" style="width:100%%"/>
+                            		<field name="camp_organizer" style="width:100%%" readonly="1"/>
+                            		<field name="camp_organizer_phone" style="width:100%%" readonly="1"/>
+                            		<field name="camp_organizer_email" style="width:100%%" readonly="1"/>
                            		</group>
 	                            <group string="Camp Host Information">
-                                	<field name="camp_host_name"/>
-                            		<field name="camp_family_name" />
-                            		<field name="camp_email" />
-                            		<field name="camp_phone" />
-                            		<field name="camp_street" />
-                            		<field name="camp_city" />
-                            		<field name="camp_postal_code"/>
-                            		<field name="camp_location"/>
-                            		<field name="camp_rain_plan"/>
-                            		<field name="camp_first_date"/>
-                            		<field name="is_more_camp_host"/>
+                                	<field name="camp_host_name" readonly="1"/>
+                            		<field name="camp_family_name"  readonly="1"/>
+                            		<field name="camp_email" readonly="1"/>
+                            		<field name="camp_phone" readonly="1"/>
+                            		<field name="camp_street" readonly="1"/>
+                            		<field name="camp_city" readonly="1"/>
+                            		<field name="camp_postal_code" readonly="1"/>
+                            		<field name="camp_location" readonly="1"/>
+                            		<field name="camp_rain_plan" readonly="1"/>
+                            		<field name="camp_first_date" readonly="1"/>
+                            		<field name="is_more_camp_host" readonly="1"/>
                             	</group>
                            	</group>
 
@@ -101,7 +104,7 @@
 								<table>
 									<tr>
 										<td style="width:10%">
-                           					<field name='camp_condition_one'/>
+                           					<field name='camp_condition_one' readonly="1"/>
 										</td>
 										<td>
    										<label for="camp_condition_one" class="oe-edit-only"/>
@@ -113,7 +116,7 @@
 								<table>
 									<tr>
 										<td style="width:10%">
-                           					<field name='camp_condition_two'/>
+                           					<field name='camp_condition_two' readonly="1"/>
 										</td>
 										<td>
    										<label for="camp_condition_two" class="oe-edit-only"/>

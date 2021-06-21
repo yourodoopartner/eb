@@ -73,9 +73,6 @@ class SaleOrder(models.Model):
     total_camp_days = fields.Float("Total Days", compute='_compute_total_days', store=True)
     
     
-    animator = fields.Many2one('product.category', string='Animator')
-
-
     @api.depends('camp_date_selection_ids')
     def _compute_total_days(self):
         """

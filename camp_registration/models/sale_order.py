@@ -71,8 +71,8 @@ class SaleOrder(models.Model):
     
     camp_date_selection_ids = fields.One2many('camp.date.selection', 'sale_order_id', 'Camp Dates Selection')
     total_camp_days = fields.Float("Total Days", compute='_compute_total_days', store=True)
-
-
+    
+    
     @api.depends('camp_date_selection_ids')
     def _compute_total_days(self):
         """

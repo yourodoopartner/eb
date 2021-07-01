@@ -12,8 +12,23 @@
 	            <xpath expr="//field[@name='invoice_payment_ref']" position="before">
 			        <field name="visible_pay_now"/>
 			    </xpath>
+			    
+			    <xpath expr="//field[@name='invoice_origin']" position="after">
+			        <field name="event_date"/>
+			    </xpath>
             </field>
         </record>
-
+        
+        <record id="view_invoice_tree_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.tree.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_invoice_tree"/>
+            <field name="arch" type="xml">
+			    <xpath expr="//field[@name='invoice_origin']" position="after">
+			        <field name="event_date"/>
+			    </xpath>
+            </field>
+        </record>
+        
     </data>
 </odoo>

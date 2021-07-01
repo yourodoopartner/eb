@@ -21,7 +21,7 @@
 ##############################################################################
 {
     'name': 'Camp Registration',
-    'version': '0.3',
+    'version': '0.4',
     'category': 'custom',
     'summary': 'Camp Registration',
     'description': """

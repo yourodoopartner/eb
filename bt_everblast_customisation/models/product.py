@@ -5,3 +5,6 @@ class ProductCategory(models.Model):
     _inherit = "product.category"
 
     is_staff = fields.Boolean(string='Staff')
+    is_equipment = fields.Boolean(string='Equipment')
+    
+    

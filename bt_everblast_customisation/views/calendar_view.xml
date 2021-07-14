@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  	<record id="view_calendar_event_form_inherit" model="ir.ui.view">
+	    <field name="name">calendar.event.form.inherit.eb</field>
+	    <field name="model">calendar.event</field>
+	    <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+	    <field name="arch" type="xml">
+		    <xpath expr="//notebook/page[@name='page_details']/group/group/field[@name='event_tz']" position="after">
+	        	<field name="animator_id" domain="[('categ_id.is_staff', '=', True)]"/>
+	        	<field name="equipment_id" domain="[('categ_id.is_equipment', '=', True)]"/>
+	        	<field name="product_id"/>
+	      	</xpath>
+	    </field>
+	</record>
+	
+</odoo>

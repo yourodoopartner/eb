@@ -14,10 +14,10 @@
     'website': "https://www.broadtech-innovations.com",
 
     'category': '',
-    'version': '0.3',
+    'version': '1.3',
 
     'depends': [
-         'account_payment', 'sale',
+         'account_payment', 'sale', 'odoo_rental_request_management','calendar'
     ],
 
     'data': [
@@ -26,6 +26,7 @@
         'views/sale_view.xml',
         'views/account_move_views.xml',
         'views/account_portal_templates.xml',
+        'views/calendar_view.xml',
     ],
 
 }

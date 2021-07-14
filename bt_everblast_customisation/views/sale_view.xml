@@ -7,10 +7,20 @@
     <field name="type">form</field>
     <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
-       <xpath expr="//group/group/field[@name='partner_id']" position="after">
-         <field name="event_date"/>
-         <field name="animator_id" domain="[('categ_id.is_staff', '=', True)]"/>
-      </xpath>
+    	<xpath expr="//sheet/div[@name='button_box']" position="inside">
+    		<button name="action_view_meeting" type="object" class="oe_stat_button" icon="fa-calendar" context="{'partner_id': partner_id}"
+    			 attrs="{'invisible': ['|',('state', 'in', ['draft','sent','cancel']),('is_custom_rental_quote','=',False)]}">
+                <div class="o_stat_info">
+<!--                     <field name="meeting_count" class="o_stat_value"/> -->
+                    <span class="o_stat_text"> Meetings</span>
+                </div>
+            </button>
+    	</xpath>
+    	<xpath expr="//group/group/field[@name='partner_id']" position="after">
+	        <field name="event_date"/>
+	        <field name="animator_id" domain="[('categ_id.is_staff', '=', True)]"/>
+	        <field name="equipment_id" domain="[('categ_id.is_equipment', '=', True)]"/>
+        </xpath>
     </field>
   </record>
   
